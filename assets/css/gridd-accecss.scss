@@ -1,0 +1,50 @@
+@import './accecss/accecss';
+
+@include accecss(
+	$element: '.accecss-protanopia',
+	$zones: false,
+	$grayscale: false,
+	$cbFilter: protanopia
+);
+@include accecss(
+	$element: '.accecss-protanomaly',
+	$zones: false,
+	$grayscale: false,
+	$cbFilter: protanomaly
+);
+@include accecss(
+	$element: '.accecss-deuteranopia',
+	$zones: false,
+	$grayscale: false,
+	$cbFilter: deuteranopia
+);
+@include accecss(
+	$element: '.accecss-deuteranomaly',
+	$zones: false,
+	$grayscale: false,
+	$cbFilter: deuteranomaly
+);
+@include accecss(
+	$element: '.accecss-tritanopia',
+	$zones: false,
+	$grayscale: false,
+	$cbFilter: tritanopia
+);
+@include accecss(
+	$element: '.accecss-tritanomaly',
+	$zones: false,
+	$grayscale: false,
+	$cbFilter: tritanomaly
+);
+@include accecss(
+	$element: '.accecss-achromatopsia',
+	$zones: false,
+	$grayscale: false,
+	$cbFilter: achromatopsia
+);
+@include accecss(
+	$element: '.accecss-achromatomaly',
+	$zones: false,
+	$grayscale: false,
+	$cbFilter: achromatomaly
+);

@@ -1,0 +1,16 @@
+// We use the "ID" (all caps) as a placeholder.
+// The ID will be replaced by the actual nested-grid ID via PHP
+// when the style is included inline in the document.
+.gridd-tp-nested-grid-ID {
+	background-color: var(--gridd-nested-grid-ID-bg);
+	padding: var(--gridd-nested-grid-ID-padding);
+	display: flex;
+	justify-content: center;
+	overflow: visible;
+	box-shadow: var(--gridd-nested-grid-ID-box-shadow);
+
+	> .inner {
+		width: 100%;
+		max-width: var(--gridd-nested-grid-ID-max-width);
+	}
+}

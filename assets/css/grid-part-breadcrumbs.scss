@@ -1,0 +1,9 @@
+nav.breadcrumbs {
+	.breadcrumbs__crumb {
+		+ .breadcrumbs__crumb {
+			&:before {
+				padding: 0 calc(var(--gridd-breadcrumbs-whitespace) / 2);
+			}
+		}
+	}
+}

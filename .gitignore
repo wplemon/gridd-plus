@@ -1,0 +1,10 @@
+.sass-cache/
+node_modules/
+vendor/
+*.lock
+*.css.map
+package-lock.json
+gridd-plus.zip
+inc/acf/plugin
+assets/css/*.css
+assets/css/**/*.css

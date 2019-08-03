@@ -1,0 +1,15 @@
+// We use the "ID" (all caps) as a placeholder.
+// The ID will be replaced by the actual navigation-ID via PHP
+// when the style is included inline in the document.
+.gridd-tp-nav_ID {
+	.gridd-navigation {
+		a {
+			padding: calc(var(--gridd-nav-ID-items-padding) / 1.618) var(--gridd-nav-ID-items-padding);
+		}
+
+		.gridd-toggle {
+            padding-top: var(--gridd-nav-1-items-padding);
+            padding-bottom: var(--gridd-nav-1-items-padding);
+		}
+	}
+}

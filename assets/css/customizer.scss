@@ -1,0 +1,12 @@
+.customize-control-gridd_grid {
+    .gridd-grid-builder-grids {
+        transition: opacity 250ms;
+
+        &.editing-parts {
+            .gridd-grid-selectable {
+                z-index: 999;
+                opacity: .5;
+            }
+        }
+    }
+}
