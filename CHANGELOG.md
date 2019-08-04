@@ -1,3 +1,9 @@
+## v1.0.5
+2019-08-04
+
+* Fix: Compatibility with Gridd v1.1.14
+* Fix: a11y text-controls JS issue in the customizer.
+
 ## v1.0.4
 2019-07-28
 
