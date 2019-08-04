@@ -5,6 +5,7 @@
  * Author:      Ari Stathopoulos
  * Author URI:  http://aristath.github.io
  * Version:     1.0.5
+ * Description: Premium addon plugin for the Gridd theme.
  * Text Domain: gridd-plus
  *
  * @package   Grid Plus
