@@ -14,6 +14,8 @@ use Gridd\Customizer\Sanitize;
 
 $sanitization = new Sanitize();
 
+$custom_parts_nr = apply_filters( 'gridd_plus_content_grid_custom_parts_number', 5 );
+
 /**
  * Build the array of grid-parts.
  * This will be used by the grid control.
@@ -41,6 +43,15 @@ $grid_parts = [
 	],
 ];
 
+for ( $i = 1; $i <= $custom_parts_nr; $i++ ) {
+	$grid_parts[] = [
+		'id'       => 'single_post_custom_content_' . $i,
+		/* Translators: Number. */
+		'label'    => sprintf( esc_html__( 'Custom Content %s', 'gridd-plus' ), $i ),
+		'color'    => [ 'hsl(' . ( $i * 37 ) . ',50%,75%)', '#000' ],
+		'priority' => 10 + $i,
+	];
+}
 /**
  * Add a toggle to allow customizing the post content grid.
  * This is used as a template switch and as a condition to hide or show the grid control.
@@ -205,6 +216,20 @@ add_action(
 			</div>
 			<?php
 		}
+
+		/**
+		 * Template part for custom content.
+		 *
+		 * @since 1.1
+		 */
+		if ( false !== strpos( $part, 'single_post_custom_content_' ) ) {
+			$i = (int) str_replace( 'single_post_custom_content_', '', $part );
+			?>
+			<div class="gridd-tp gridd-tp-single_post_custom_content_<?php echo intval( $i ); ?>">
+				<?php echo do_blocks( do_shortcode( get_theme_mod( 'gridd_plus_single_post_custom_content_content_' . $i, '' ) ) ); ?>
+			</div>
+			<?php
+		}
 	}
 );
 
@@ -317,3 +342,33 @@ Customizer::add_field(
 		'transport'   => 'postMessage',
 	]
 );
+
+/**
+ * Add section for custom-content parts.
+ *
+ * @since 1.1
+ */
+for ( $i = 1; $i <= $custom_parts_nr; $i++ ) {
+	Customizer::add_section(
+		'gridd_grid_part_details_single_post_custom_content_' . $i,
+		[
+			/* Translators: Number. */
+			'title'   => sprintf( esc_html__( 'Custom Content %s', 'gridd-plus' ), $i ),
+			'section' => 'gridd_grid_part_details_content',
+		]
+	);
+
+	Customizer::add_field(
+		[
+			'type'        => 'code',
+			'settings'    => 'gridd_plus_single_post_custom_content_content_' . $i,
+			'label'       => esc_html__( 'Content', 'gridd-plus' ),
+			'description' => esc_html__( 'Accepts HTML & Shortcodes.', 'gridd-plus' ),
+			'section'     => 'gridd_grid_part_details_single_post_custom_content_' . $i,
+			'default'     => '',
+			'choices'     => [
+				'language' => 'html',
+			],
+		]
+	);
+}
