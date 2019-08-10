@@ -184,6 +184,7 @@ add_action(
 				padding:var(--gridd-plus-post-content-padding,0.5em);
 				color:var(--gridd-plus-post-content-color,#000);
 				display: block;
+				width: 100%;
 			}
 			</style>
 			<div class="gridd-tp gridd-tp-single_post_content">
