@@ -378,3 +378,16 @@ for ( $i = 1; $i <= $custom_parts_nr; $i++ ) {
 		]
 	);
 }
+
+/**
+ * Add section for featured image.
+ *
+ * @since 1.1
+ */
+Customizer::add_section(
+	'gridd_grid_part_details_single_post_featured_image',
+	[
+		'title'   => esc_attr__( 'Featured Image', 'gridd-plus' ),
+		'section' => 'gridd_grid_part_details_content',
+	]
+);
