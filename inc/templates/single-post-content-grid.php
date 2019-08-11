@@ -35,15 +35,15 @@ $style->add_string( Grid::get_styles( $settings, 'gridd-tp-content-grid', true )
 	/**
 	 * Print styles.
 	 */
-    $style->the_css( 'gridd-inline-css-single-post-custom-content-grid' );
-    
-    /**
-     * Print the grid.
-     */
-    if ( isset( $settings['areas'] ) ) {
-        foreach ( array_keys( $settings['areas'] ) as $part ) {
-            do_action( 'gridd_the_grid_part', $part );
-        }
-    }
-    ?>
+	$style->the_css( 'gridd-inline-css-single-post-custom-content-grid' );
+
+	/**
+	 * Print the grid.
+	 */
+	if ( isset( $settings['areas'] ) ) {
+		foreach ( array_keys( $settings['areas'] ) as $part ) {
+			do_action( 'gridd_the_grid_part', $part );
+		}
+	}
+	?>
 </div>

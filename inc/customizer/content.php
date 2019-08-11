@@ -94,7 +94,7 @@ Customizer::add_field(
 				'rows'    => [ 'auto' ],
 				'columns' => [ 'auto' ],
 			],
-			'areas'        => []
+			'areas'        => [],
 		],
 		'sanitize_callback' => [ $sanitization, 'grid' ],
 		'choices'           => [
@@ -226,7 +226,13 @@ add_action(
 			$i = (int) str_replace( 'single_post_custom_content_', '', $part );
 			?>
 			<div class="gridd-tp gridd-tp-single_post_custom_content_<?php echo intval( $i ); ?>">
-				<?php echo do_blocks( do_shortcode( get_theme_mod( 'gridd_plus_single_post_custom_content_content_' . $i, '' ) ) ); ?>
+				<?php
+				/**
+				 * This has to be raw HTML.
+				 * Do not escape.
+				 */
+				echo do_blocks( do_shortcode( get_theme_mod( 'gridd_plus_single_post_custom_content_content_' . $i, '' ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput
+				?>
 			</div>
 			<?php
 		}
@@ -248,43 +254,43 @@ Customizer::add_section(
 
 Customizer::add_field(
 	[
-		'type'        => 'color',
-		'settings'    => 'gridd_plus_single_post_title_background_color',
-		'label'       => esc_html__( 'Background Color', 'gridd-plus' ),
-		'section'     => 'gridd_grid_part_details_single_post_title',
-		'default'     => '#ffffff',
-		'choices'     => [
+		'type'      => 'color',
+		'settings'  => 'gridd_plus_single_post_title_background_color',
+		'label'     => esc_html__( 'Background Color', 'gridd-plus' ),
+		'section'   => 'gridd_grid_part_details_single_post_title',
+		'default'   => '#ffffff',
+		'choices'   => [
 			'alpha' => true,
 		],
-		'css_vars'    => '--gridd-plus-post-title-bg',
-		'transport'   => 'postMessage',
+		'css_vars'  => '--gridd-plus-post-title-bg',
+		'transport' => 'postMessage',
 	]
 );
 
 Customizer::add_field(
 	[
-		'type'        => 'color',
-		'settings'    => 'gridd_plus_single_post_title_color',
-		'label'       => esc_html__( 'Color', 'gridd-plus' ),
-		'section'     => 'gridd_grid_part_details_single_post_title',
-		'default'     => '#000000',
-		'choices'     => [
+		'type'      => 'color',
+		'settings'  => 'gridd_plus_single_post_title_color',
+		'label'     => esc_html__( 'Color', 'gridd-plus' ),
+		'section'   => 'gridd_grid_part_details_single_post_title',
+		'default'   => '#000000',
+		'choices'   => [
 			'alpha' => true,
 		],
-		'css_vars'    => '--gridd-plus-post-title-color',
-		'transport'   => 'postMessage',
+		'css_vars'  => '--gridd-plus-post-title-color',
+		'transport' => 'postMessage',
 	]
 );
 
 Customizer::add_field(
 	[
-		'type'        => 'dimension',
-		'settings'    => 'gridd_plus_single_post_title_padding',
-		'label'       => esc_html__( 'Padding', 'gridd-plus' ),
-		'section'     => 'gridd_grid_part_details_single_post_title',
-		'default'     => '0.5em',
-		'css_vars'    => '--gridd-plus-post-title-padding',
-		'transport'   => 'postMessage',
+		'type'      => 'dimension',
+		'settings'  => 'gridd_plus_single_post_title_padding',
+		'label'     => esc_html__( 'Padding', 'gridd-plus' ),
+		'section'   => 'gridd_grid_part_details_single_post_title',
+		'default'   => '0.5em',
+		'css_vars'  => '--gridd-plus-post-title-padding',
+		'transport' => 'postMessage',
 	]
 );
 
@@ -303,43 +309,43 @@ Customizer::add_section(
 
 Customizer::add_field(
 	[
-		'type'        => 'color',
-		'settings'    => 'gridd_plus_single_post_content_background_color',
-		'label'       => esc_html__( 'Background Color', 'gridd-plus' ),
-		'section'     => 'gridd_grid_part_details_single_post_content',
-		'default'     => '#ffffff',
-		'choices'     => [
+		'type'      => 'color',
+		'settings'  => 'gridd_plus_single_post_content_background_color',
+		'label'     => esc_html__( 'Background Color', 'gridd-plus' ),
+		'section'   => 'gridd_grid_part_details_single_post_content',
+		'default'   => '#ffffff',
+		'choices'   => [
 			'alpha' => true,
 		],
-		'css_vars'    => '--gridd-plus-post-content-bg',
-		'transport'   => 'postMessage',
+		'css_vars'  => '--gridd-plus-post-content-bg',
+		'transport' => 'postMessage',
 	]
 );
 
 Customizer::add_field(
 	[
-		'type'        => 'color',
-		'settings'    => 'gridd_plus_single_post_content_color',
-		'label'       => esc_html__( 'Color', 'gridd-plus' ),
-		'section'     => 'gridd_grid_part_details_single_post_content',
-		'default'     => '#000000',
-		'choices'     => [
+		'type'      => 'color',
+		'settings'  => 'gridd_plus_single_post_content_color',
+		'label'     => esc_html__( 'Color', 'gridd-plus' ),
+		'section'   => 'gridd_grid_part_details_single_post_content',
+		'default'   => '#000000',
+		'choices'   => [
 			'alpha' => true,
 		],
-		'css_vars'    => '--gridd-plus-post-content-color',
-		'transport'   => 'postMessage',
+		'css_vars'  => '--gridd-plus-post-content-color',
+		'transport' => 'postMessage',
 	]
 );
 
 Customizer::add_field(
 	[
-		'type'        => 'dimension',
-		'settings'    => 'gridd_plus_single_post_content_padding',
-		'label'       => esc_html__( 'Padding', 'gridd-plus' ),
-		'section'     => 'gridd_grid_part_details_single_post_content',
-		'default'     => '0.5em',
-		'css_vars'    => '--gridd-plus-post-content-padding',
-		'transport'   => 'postMessage',
+		'type'      => 'dimension',
+		'settings'  => 'gridd_plus_single_post_content_padding',
+		'label'     => esc_html__( 'Padding', 'gridd-plus' ),
+		'section'   => 'gridd_grid_part_details_single_post_content',
+		'default'   => '0.5em',
+		'css_vars'  => '--gridd-plus-post-content-padding',
+		'transport' => 'postMessage',
 	]
 );
 

@@ -190,7 +190,7 @@ class Kirki_WCAG_Text_Color extends WP_Customize_Control {
 		<div class="mode-selectors">
 			<# if ( -1 !== _.indexOf( modes, 'auto' ) ) { #>
 				<div class="kirki-a11y-text-colorpicker-wrapper" data-id="auto">
-					<?php 
+					<?php
 					printf(
 						/* translators: The selected Color. */
 						esc_html__( 'Auto Color: %s', 'gridd-plus' ),
@@ -207,12 +207,12 @@ class Kirki_WCAG_Text_Color extends WP_Customize_Control {
 							/**
 							 * Allows changing the "Selected Color: %s" text.
 							 * Please note that this is escaped using esc_html() so no HTML markup will be accepted.
-							 * 
+							 *
 							 * @since 1.0
 							 * @param string The text to use. Use %s as a placeholder for the color value.
 							 */
-							apply_filters( 
-								'kirki_wcag_text_color_text_selected_color', 
+							apply_filters(
+								'kirki_wcag_text_color_text_selected_color',
 								/* translators: The selected color. */
 								__( 'Selected Color: %s', 'gridd-plus' )
 							)

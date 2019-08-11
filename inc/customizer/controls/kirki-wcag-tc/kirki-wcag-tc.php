@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'kirki_wcag_text_color_register_control' ) ) {
 	/**
 	 * Registers the control with Kirki.
-	 * 
+	 *
 	 * @since 1.0
 	 * @param array $controls An array of controls registered with the Kirki Toolkit.
 	 * @return array
@@ -43,7 +43,7 @@ if ( ! function_exists( 'kirki_wcag_text_color_register_control_type' ) ) {
 	/**
 	 * Registers the control type and make it eligible for
 	 * JS templating in the Customizer.
-	 * 
+	 *
 	 * @since 1.0
 	 * @param object $wp_customize The Customizer object.
 	 * @return void
@@ -54,5 +54,5 @@ if ( ! function_exists( 'kirki_wcag_text_color_register_control_type' ) ) {
 		}
 		$wp_customize->register_control_type( 'Kirki_WCAG_Text_Color' );
 	}
-} 
+}
 add_action( 'customize_register', 'kirki_wcag_text_color_register_control_type' );
