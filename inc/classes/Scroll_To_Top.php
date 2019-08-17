@@ -8,6 +8,7 @@
 namespace Gridd_Plus;
 
 use Gridd\Style;
+use Gridd\AMP;
 
 /**
  * Implements the Scroll-To-Top button.
@@ -46,13 +47,24 @@ class Scroll_To_Top {
 	public function the_html() {
 		?>
 		<div class="scrolltop-wrap">
-			<a href="#">
+			<a id="scrollToTop" href="#">
 				<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg">
 					<path id="scrolltop-bg" d="M0 0h48v48h-48z"></path>
 					<path id="scrolltop-arrow" d="M14.83 30.83l9.17-9.17 9.17 9.17 2.83-2.83-12-12-12 12z"></path>
 				</svg>
 			</a>
 		</div>
+		<?php if ( ! AMP::is_active() ) : ?>
+			<script>
+			document.getElementById( 'scrollToTop' ).onclick = function( e ) {
+				e.preventDefault();
+				window.scroll( {
+					top: 0,
+					behavior: 'smooth'
+				} );
+			}
+			</script>
+		<?php endif; ?>
 		<?php
 	}
 
