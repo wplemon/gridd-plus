@@ -46,7 +46,7 @@ class Scroll_To_Top {
 	 */
 	public function the_html() {
 		?>
-		<div class="scrolltop-wrap">
+		<div class="scrolltop-wrap" aria-hidden="true">
 			<a id="scrollToTop" href="#">
 				<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg">
 					<path id="scrolltop-bg" d="M0 0h48v48h-48z"></path>
