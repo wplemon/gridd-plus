@@ -43,6 +43,7 @@ class Customizer {
 	public function include_files() {
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/controls/kirki-wcag-tc/kirki-wcag-tc.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/controls/kirki-wcag-lc/kirki-wcag-lc.php';
+		require_once GRIDD_PLUS_PATH . '/inc/customizer/breadcrumbs.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/features.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/footer.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/grid.php';
