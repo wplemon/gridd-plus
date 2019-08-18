@@ -1,3 +1,12 @@
+## v1.0.6
+2019-08-18
+
+* New: Added font-size control in breadcrumbs.
+* New: To-Top link now implements smooth scroll.
+* Fix: Compatibility with Gridd v1.1.16.
+* Fix: Added plugin description.
+* Fix: Code cleanup.
+
 ## v1.0.5
 2019-08-04
 

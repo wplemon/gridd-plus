@@ -16,15 +16,9 @@ $sanitization = new Sanitize();
 Customizer::add_section(
 	'gridd_plus_offcanvas_sidebar',
 	[
-		'title'       => esc_html__( 'Offcanvas Sidebar', 'gridd-plus' ),
-		'description' => Customizer::section_description(
-			'gridd_plus_offcanvas_sidebar',
-			[
-				'docs' => 'https://wplemon.com/documentation/gridd/grid-parts/offcanvas-sidebar/',
-			]
-		),
-		'priority'    => 27,
-		'panel'       => 'gridd_options',
+		'title'    => esc_html__( 'Offcanvas Sidebar', 'gridd-plus' ),
+		'priority' => 27,
+		'panel'    => 'gridd_options',
 	]
 );
 

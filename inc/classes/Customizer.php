@@ -28,8 +28,6 @@ class Customizer {
 
 		add_filter( 'gridd_field_args', [ $this, 'field_args' ] );
 
-		add_filter( 'gridd_section_description', [ $this, 'section_description' ], 10, 2 );
-
 		add_action( 'customize_controls_print_styles', [ $this, 'customize_controls_print_styles' ] );
 	}
 
@@ -43,6 +41,7 @@ class Customizer {
 	public function include_files() {
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/controls/kirki-wcag-tc/kirki-wcag-tc.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/controls/kirki-wcag-lc/kirki-wcag-lc.php';
+		require_once GRIDD_PLUS_PATH . '/inc/customizer/breadcrumbs.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/features.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/footer.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/grid.php';
@@ -131,22 +130,6 @@ class Customizer {
 				break;
 		}
 
-		return $args;
-	}
-
-	/**
-	 * Modify section description arguments.
-	 *
-	 * @access public
-	 * @since 1.0
-	 * @param array  $args The description arguments.
-	 * @param string $id   The section ID.
-	 * @return array
-	 */
-	public function section_description( $args, $id ) {
-		if ( isset( $args['plus'] ) ) {
-			unset( $args['plus'] );
-		}
 		return $args;
 	}
 
