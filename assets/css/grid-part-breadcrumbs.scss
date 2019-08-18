@@ -1,9 +1,3 @@
-nav.breadcrumbs {
-	.breadcrumbs__crumb {
-		+ .breadcrumbs__crumb {
-			&:before {
-				padding: 0 calc(var(--gridd-breadcrumbs-whitespace) / 2);
-			}
-		}
-	}
+.gridd-tp-breadcrumbs {
+	font-size: calc(var(--gridd-breadcrumbs-font-size) * 1em);
 }
