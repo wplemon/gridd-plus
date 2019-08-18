@@ -58,11 +58,6 @@ class Styles {
 		switch ( $style->context ) {
 			case 'grid-part/breadcrumbs':
 				$style->add_file( GRIDD_PLUS_PATH . '/assets/css/grid-part-breadcrumbs.min.css' );
-				$style->add_vars(
-					[
-						'--gridd-breadcrumbs-whitespace' => get_theme_mod( 'gridd_grid_breadcrumbs_whitespace', 1 ) . 'em',
-					]
-				);
 				break;
 
 			case 'main-styles':
