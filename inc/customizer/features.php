@@ -18,7 +18,7 @@ Customizer::add_field(
 		'default'         => '60vh',
 		'priority'        => 25,
 		'transport'       => 'refresh',
-		'css_vars'        => '--gridd-featured-image-fixed-height',
+		'css_vars'        => '--fimg-fh',
 		'transport'       => 'postMessage',
 		'active_callback' => function() {
 			return ( is_singular() && 'fixed' === get_theme_mod( 'gridd_featured_image_mode_singular', 'alignwide' ) );

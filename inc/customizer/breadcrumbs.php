@@ -24,7 +24,7 @@ Customizer::add_field(
 		'section'     => 'gridd_grid_part_details_breadcrumbs',
 		'default'     => 1,
 		'transport'   => 'postMessage',
-		'css_vars'    => '--gridd-breadcrumbs-font-size',
+		'css_vars'    => '--brd-fs',
 		'choices'     => [
 			'min'    => .5,
 			'max'    => 2,

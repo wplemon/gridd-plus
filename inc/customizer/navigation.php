@@ -40,7 +40,7 @@ function gridd_plus_nav_customizer_options( $id ) {
 			'section'     => "gridd_grid_part_details_nav_$id",
 			'default'     => 1,
 			'transport'   => 'postMessage',
-			'css_vars'    => [ "--gridd-nav-$id-font-size", '$em' ],
+			'css_vars'    => [ "--nv-$id-fs", '$em' ],
 			'choices'     => [
 				'min'    => 0.5,
 				'max'    => 2.5,
@@ -59,7 +59,7 @@ function gridd_plus_nav_customizer_options( $id ) {
 			'section'     => "gridd_grid_part_details_nav_$id",
 			'default'     => 1,
 			'transport'   => 'postMessage',
-			'css_vars'    => [ "--gridd-nav-$id-items-padding", '$em' ],
+			'css_vars'    => [ "--nv-$id-ipd", '$em' ],
 			'choices'     => [
 				'min'    => 0.2,
 				'max'    => 3,
@@ -83,7 +83,7 @@ function gridd_plus_nav_customizer_options( $id ) {
 				'step'   => .01,
 				'suffix' => 'em',
 			],
-			'css_vars'        => [ "--gridd-nav-$id-collapsed-icon-size", '$em' ],
+			'css_vars'        => [ "--nv-$id-cis", '$em' ],
 			'active_callback' => [
 				[
 					'setting'  => "gridd_grid_nav_{$id}_responsive_behavior",

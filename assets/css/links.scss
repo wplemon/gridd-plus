@@ -2,7 +2,7 @@
 
 	a,
 	a:visited {
-		text-decoration: var(--gridd-links-text-decoration);
+		text-decoration: var(--ltd);
 
 		h1,
 		h2,
@@ -10,7 +10,7 @@
 		h4,
 		h5,
 		h6 {
-			text-decoration: var(--gridd-header-links-text-decoration);
+			text-decoration: var(--hltd);
 		}
 	}
 
@@ -22,7 +22,7 @@
 	h6,
 	.entry-title {
 		a {
-			text-decoration: var(--gridd-header-links-text-decoration);
+			text-decoration: var(--hltd);
 		}
 	}
 

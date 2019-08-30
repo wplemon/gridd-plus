@@ -15,7 +15,7 @@ Customizer::add_field(
 		'label'     => esc_attr__( 'Headers Color', 'gridd-plus' ),
 		'section'   => 'gridd_grid_part_details_content',
 		'default'   => '#000000',
-		'css_vars'  => '--gridd-headers-color',
+		'css_vars'  => '--hdcl',
 		'transport' => 'postMessage',
 		'priority'  => 45,
 		'choices'   => [
@@ -86,7 +86,7 @@ Customizer::add_field(
 		'section'     => 'gridd_typography',
 		'default'     => 'underline',
 		'priority'    => 110,
-		'css_vars'    => '--gridd-links-text-decoration',
+		'css_vars'    => '--ltd',
 		'transport'   => 'postMessage',
 		'choices'     => [
 			'none'      => esc_attr__( 'None', 'gridd-plus' ),
@@ -104,7 +104,7 @@ Customizer::add_field(
 		'section'     => 'gridd_typography',
 		'default'     => 'none',
 		'priority'    => 120,
-		'css_vars'    => '--gridd-header-links-text-decoration',
+		'css_vars'    => '--hltd',
 		'transport'   => 'postMessage',
 		'choices'     => [
 			'none'      => esc_attr__( 'None', 'gridd-plus' ),

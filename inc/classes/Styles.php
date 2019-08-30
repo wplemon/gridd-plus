@@ -100,9 +100,9 @@ class Styles {
 				$style->replace( 'ID', $nav_id );
 				$style->add_vars(
 					[
-						"--gridd-nav-$nav_id-font-size" => get_theme_mod( "gridd_grid_nav_{$nav_id}_font_size", 1 ) . 'em',
-						"--gridd-nav-$nav_id-items-padding" => get_theme_mod( "gridd_grid_nav_{$nav_id}_items_padding", 1 ) . 'em',
-						"--gridd-nav-$nav_id-collapsed-icon-size" => get_theme_mod( "gridd_grid_nav_{$nav_id}_collapse_icon_size", 1 ) . 'em',
+						"--nv-$nav_id-fs" => get_theme_mod( "gridd_grid_nav_{$nav_id}_font_size", 1 ) . 'em',
+						"--nv-$nav_id-ipd" => get_theme_mod( "gridd_grid_nav_{$nav_id}_items_padding", 1 ) . 'em',
+						"--nv-$nav_id-cis" => get_theme_mod( "gridd_grid_nav_{$nav_id}_collapse_icon_size", 1 ) . 'em',
 					]
 				);
 				break;
