@@ -14,11 +14,11 @@ Customizer::add_field(
 	[
 		'type'        => 'slider',
 		'settings'    => 'gridd_grid_breadcrumbs_font_size',
-		'label'       => esc_html__( 'Font Size', 'gridd' ),
+		'label'       => esc_html__( 'Font Size', 'gridd-plus' ),
 		'description' => Customizer::get_control_description(
 			[
 				'short'   => '',
-				'details' => esc_html__( 'Controls the font-size for your breadcrumbs. This value is relative to the body font-size, so a value of 1em will have the same size as your content.', 'gridd' ),
+				'details' => esc_html__( 'Controls the font-size for your breadcrumbs. This value is relative to the body font-size, so a value of 1em will have the same size as your content.', 'gridd-plus' ),
 			]
 		),
 		'section'     => 'gridd_grid_part_details_breadcrumbs',
