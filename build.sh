@@ -1,7 +1,5 @@
 #!/bin/sh
 
-npm install && grunt
-
 rm -Rf gridd-plus
 rm -f gridd-plus.zip
 rm -Rf ../gridd-plus2
