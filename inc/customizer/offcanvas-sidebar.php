@@ -53,7 +53,7 @@ Customizer::add_field(
 		'section'         => 'gridd_plus_offcanvas_sidebar',
 		'default'         => '300px',
 		'transport'       => 'postMessage',
-		'css_vars'        => '--gridd-offcanvas-sidebar-width',
+		'css_vars'        => '--ocnv-w',
 		'active_callback' => [
 			[
 				'setting'  => 'gridd_pluss_offcanvas_sidebar_enable',
@@ -95,7 +95,7 @@ Customizer::add_field(
 		'section'         => 'gridd_plus_offcanvas_sidebar',
 		'default'         => '1em',
 		'transport'       => 'postMessage',
-		'css_vars'        => '--gridd-offcanvas-sidebar-padding',
+		'css_vars'        => '--ocnv-pd',
 		'active_callback' => [
 			[
 				'setting'  => 'gridd_pluss_offcanvas_sidebar_enable',
@@ -114,7 +114,7 @@ Customizer::add_field(
 		'section'         => 'gridd_plus_offcanvas_sidebar',
 		'default'         => '#ffffff',
 		'transport'       => 'postMessage',
-		'css_vars'        => '--gridd-offcanvas-sidebar-bg',
+		'css_vars'        => '--ocnv-bg',
 		'choices'         => [
 			'alpha' => true,
 		],
@@ -140,7 +140,7 @@ Customizer::add_field(
 		],
 		'default'           => '#000000',
 		'transport'         => 'postMessage',
-		'css_vars'          => '--gridd-offcanvas-sidebar-color',
+		'css_vars'          => '--ocnv-cl',
 		'sanitize_callback' => [ $sanitization, 'color_hex' ],
 		'active_callback'   => [
 			[
@@ -160,7 +160,7 @@ Customizer::add_field(
 		'section'           => 'gridd_plus_offcanvas_sidebar',
 		'default'           => '#0f5e97',
 		'transport'         => 'postMessage',
-		'css_vars'          => '--gridd-offcanvas-sidebar-links-color',
+		'css_vars'          => '--ocnv-lc',
 		'choices'           => [
 			'backgroundColor' => 'gridd_plus_offcanvas_sidebar_bg_color',
 			'textColor'       => 'gridd_plus_offcanvas_sidebar_color',

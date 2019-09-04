@@ -98,7 +98,7 @@ function gridd_add_nested_grid_options( $id ) {
 			'section'     => "gridd_grid_part_details_nested-grid-$id",
 			'default'     => '0',
 			'transport'   => 'postMessage',
-			'css_vars'    => "--gridd-nested-grid-$id-padding",
+			'css_vars'    => "--ns-gr-$id-pd",
 		]
 	);
 
@@ -111,7 +111,7 @@ function gridd_add_nested_grid_options( $id ) {
 			'section'   => "gridd_grid_part_details_nested-grid-$id",
 			'default'   => '0',
 			'transport' => 'postMessage',
-			'css_vars'  => "--gridd-nested-grid-$id-grid-gap",
+			'css_vars'  => "--ns-gr-$id-gg",
 		]
 	);
 
@@ -125,7 +125,7 @@ function gridd_add_nested_grid_options( $id ) {
 			'section'     => "gridd_grid_part_details_nested-grid-$id",
 			'default'     => '',
 			'transport'   => 'postMessage',
-			'css_vars'    => "--gridd-nested-grid-$id-max-width",
+			'css_vars'    => "--ns-gr-$id-mw",
 		]
 	);
 
@@ -138,7 +138,7 @@ function gridd_add_nested_grid_options( $id ) {
 			'section'     => "gridd_grid_part_details_nested-grid-$id",
 			'default'     => '#ffffff',
 			'transport'   => 'postMessage',
-			'css_vars'    => "--gridd-nested-grid-$id-bg",
+			'css_vars'    => "--ns-gr-$id-bg",
 			'choices'     => [
 				'alpha' => true,
 			],
@@ -154,7 +154,7 @@ function gridd_add_nested_grid_options( $id ) {
 			'section'     => "gridd_grid_part_details_nested-grid-$id",
 			'default'     => 'none',
 			'transport'   => 'postMessage',
-			'css_vars'    => "--gridd-nested-grid-$id-box-shadow",
+			'css_vars'    => "--ns-gr-$id-bs",
 			'priority'    => 200,
 			'choices'     => [
 				'none' => esc_html__( 'None', 'gridd-plus' ),

@@ -74,7 +74,9 @@ class Grid {
 				break;
 
 			case 'header':
-				$args['small'] = \Gridd\Grid::get_options( 'gridd_grid_header_mobile' );
+				if ( get_theme_mod( 'gridd_grid_header_mobile_override', true ) ) {
+					$args['small'] = \Gridd\Grid::get_options( 'gridd_grid_header_mobile' );
+				}
 				break;
 
 			case 'footer':

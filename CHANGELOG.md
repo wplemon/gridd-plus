@@ -1,3 +1,9 @@
+## v1.0.7
+2019-09-04
+
+* Compatibility with latest Gridd theme
+* Updated ACF to v5.8.4
+
 ## v1.0.6
 2019-08-18
 
