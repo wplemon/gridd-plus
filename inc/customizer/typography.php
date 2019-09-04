@@ -77,38 +77,38 @@ Customizer::add_field(
 	]
 );
 
-Customizer::add_field(
-	[
-		'settings'    => 'gridd_links_decoration',
-		'type'        => 'radio',
-		'label'       => esc_attr__( 'Links decoration', 'gridd-plus' ),
-		'description' => esc_html__( 'Select if you want links to be underlined or not. For increased accessibility it is recommended to underline links as this offers a more clear visual queue.', 'gridd-plus' ),
-		'section'     => 'gridd_typography',
-		'default'     => 'underline',
-		'priority'    => 110,
-		'css_vars'    => '--ltd',
-		'transport'   => 'postMessage',
-		'choices'     => [
-			'none'      => esc_attr__( 'None', 'gridd-plus' ),
-			'underline' => esc_attr__( 'Underline', 'gridd-plus' ),
-		],
-	]
-);
+// Customizer::add_field(
+// 	[
+// 		'settings'    => 'gridd_links_decoration',
+// 		'type'        => 'radio',
+// 		'label'       => esc_attr__( 'Links decoration', 'gridd-plus' ),
+// 		'description' => esc_html__( 'Select if you want links to be underlined or not. For increased accessibility it is recommended to underline links as this offers a more clear visual queue.', 'gridd-plus' ),
+// 		'section'     => 'gridd_typography',
+// 		'default'     => 'underline',
+// 		'priority'    => 110,
+// 		'css_vars'    => '--ltd',
+// 		'transport'   => 'postMessage',
+// 		'choices'     => [
+// 			'none'      => esc_attr__( 'None', 'gridd-plus' ),
+// 			'underline' => esc_attr__( 'Underline', 'gridd-plus' ),
+// 		],
+// 	]
+// );
 
-Customizer::add_field(
-	[
-		'settings'    => 'gridd_header_links_decoration',
-		'type'        => 'radio',
-		'label'       => esc_attr__( 'Header Links Decoration', 'gridd-plus' ),
-		'description' => esc_html__( 'Select if you want links inside headers to be underlined or not.', 'gridd-plus' ),
-		'section'     => 'gridd_typography',
-		'default'     => 'none',
-		'priority'    => 120,
-		'css_vars'    => '--hltd',
-		'transport'   => 'postMessage',
-		'choices'     => [
-			'none'      => esc_attr__( 'None', 'gridd-plus' ),
-			'underline' => esc_attr__( 'Underline', 'gridd-plus' ),
-		],
-	]
-);
+// Customizer::add_field(
+// 	[
+// 		'settings'    => 'gridd_header_links_decoration',
+// 		'type'        => 'radio',
+// 		'label'       => esc_attr__( 'Header Links Decoration', 'gridd-plus' ),
+// 		'description' => esc_html__( 'Select if you want links inside headers to be underlined or not.', 'gridd-plus' ),
+// 		'section'     => 'gridd_typography',
+// 		'default'     => 'none',
+// 		'priority'    => 120,
+// 		'css_vars'    => '--hltd',
+// 		'transport'   => 'postMessage',
+// 		'choices'     => [
+// 			'none'      => esc_attr__( 'None', 'gridd-plus' ),
+// 			'underline' => esc_attr__( 'Underline', 'gridd-plus' ),
+// 		],
+// 	]
+// );
