@@ -12,42 +12,13 @@ use Gridd\Customizer\Sanitize;
 
 $sanitization = new Sanitize();
 
-/**
- * Global toggle for mobile/desktop grid.
- */
-Customizer::add_field(
-	[
-		'settings'          => 'gridd_footer_grid_toggle',
-		'type'              => 'radio-buttonset',
-		'label'             => esc_html__( 'Toggle between desktop & mobile grids.', 'gridd-plus' ),
-		'section'           => 'grid_part_details_footer',
-		'default'           => 'desktop',
-		'priority'          => -10,
-		'transport'         => 'postMessage',
-		'choices'           => [
-			'desktop' => esc_html__( 'Desktop', 'gridd-plus' ),
-			'mobile'  => esc_html__( 'Mobile', 'gridd-plus' ),
-		],
-		'sanitize_callback' => function() {
-			return 'desktop';
-		},
-	]
-);
-
 Customizer::add_field(
 	[
 		'settings'        => 'gridd_copy_footer_grid_to_mobile',
 		'type'            => 'custom',
-		'label'           => esc_html__( 'Copy desktop grid setings to mobile grid', 'gridd-plus' ),
+		'label'           => '',
 		'section'         => 'grid_part_details_footer',
-		'default'         => '<div style="margin-bottom:1em;"><button class="button-gridd-copy-grid-setting button button-primary button-large" data-from="gridd_footer_grid" data-to="gridd_grid_footer_mobile">' . esc_html__( 'Click here to copy settings from desktop grid', 'gridd-plus' ) . '</button></div>',
-		'active_callback' => [
-			[
-				'setting'  => 'gridd_footer_grid_toggle',
-				'operator' => '===',
-				'value'    => 'mobile',
-			],
-		],
+		'default'         => '<div style="margin-bottom:1em;"><button class="button-gridd-copy-grid-setting button button-primary button-large" data-from="gridd_footer_grid" data-to="gridd_grid_footer_mobile">' . esc_html__( 'Copy desktop grid to mobile', 'gridd-plus' ) . '</button></div>',
 	]
 );
 
