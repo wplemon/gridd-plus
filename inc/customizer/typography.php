@@ -13,7 +13,7 @@ Customizer::add_field(
 		'type'      => 'kirki-wcag-tc',
 		'settings'  => 'gridd_headers_color',
 		'label'     => esc_attr__( 'Headers Color', 'gridd-plus' ),
-		'section'   => 'gridd_grid_part_details_content',
+		'section'   => 'grid_part_details_content',
 		'default'   => '#000000',
 		'css_vars'  => '--hdcl',
 		'transport' => 'postMessage',
@@ -81,7 +81,7 @@ Customizer::add_field(
 // 	[
 // 		'settings'    => 'gridd_links_decoration',
 // 		'type'        => 'radio',
-// 		'label'       => esc_attr__( 'Links decoration', 'gridd-plus' ),
+// 		'label'       => esc_attr__( 'Links Decoration', 'gridd-plus' ),
 // 		'description' => esc_html__( 'Select if you want links to be underlined or not. For increased accessibility it is recommended to underline links as this offers a more clear visual queue.', 'gridd-plus' ),
 // 		'section'     => 'gridd_typography',
 // 		'default'     => 'underline',

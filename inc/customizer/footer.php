@@ -20,7 +20,7 @@ Customizer::add_field(
 		'settings'          => 'gridd_footer_grid_toggle',
 		'type'              => 'radio-buttonset',
 		'label'             => esc_html__( 'Toggle between desktop & mobile grids.', 'gridd-plus' ),
-		'section'           => 'gridd_grid_part_details_footer',
+		'section'           => 'grid_part_details_footer',
 		'default'           => 'desktop',
 		'priority'          => -10,
 		'transport'         => 'postMessage',
@@ -39,7 +39,7 @@ Customizer::add_field(
 		'settings'        => 'gridd_copy_footer_grid_to_mobile',
 		'type'            => 'custom',
 		'label'           => esc_html__( 'Copy desktop grid setings to mobile grid', 'gridd-plus' ),
-		'section'         => 'gridd_grid_part_details_footer',
+		'section'         => 'grid_part_details_footer',
 		'default'         => '<div style="margin-bottom:1em;"><button class="button-gridd-copy-grid-setting button button-primary button-large" data-from="gridd_footer_grid" data-to="gridd_grid_footer_mobile">' . esc_html__( 'Click here to copy settings from desktop grid', 'gridd-plus' ) . '</button></div>',
 		'active_callback' => [
 			[
@@ -54,7 +54,7 @@ Customizer::add_field(
 Customizer::add_field(
 	[
 		'settings'          => 'gridd_grid_footer_mobile',
-		'section'           => 'gridd_grid_part_details_footer',
+		'section'           => 'grid_part_details_footer',
 		'type'              => 'gridd_grid',
 		'grid-part'         => 'footer',
 		'label'             => esc_html__( 'Footer Mobile Grid Settings', 'gridd-plus' ),

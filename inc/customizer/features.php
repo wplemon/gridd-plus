@@ -14,15 +14,19 @@ Customizer::add_field(
 		'settings'        => 'gridd_featured_image_fixed_singular_height',
 		'label'           => esc_attr__( 'Fixed container maximum height', 'gridd-plus' ),
 		'description'     => esc_html__( 'Select how featured images will be displayed in single post-types (Applies to all post-types).', 'gridd-plus' ),
-		'section'         => 'gridd_features',
+		'section'         => 'gridd_features_single_post',
 		'default'         => '60vh',
 		'priority'        => 25,
 		'transport'       => 'refresh',
 		'css_vars'        => '--fimg-fh',
 		'transport'       => 'postMessage',
-		'active_callback' => function() {
-			return ( is_singular() && 'fixed' === get_theme_mod( 'gridd_featured_image_mode_singular', 'alignwide' ) );
-		},
+		'active_callback' => [
+			[
+				'setting' => 'gridd_featured_image_mode_singular',
+				'value'   => 'fixed',
+				'operator' => '===',
+			],
+		],
 	]
 );
 
@@ -32,7 +36,7 @@ Customizer::add_field(
 		'settings'    => 'gridd_headers_anchor_links',
 		'label'       => esc_attr__( 'Enable anchor links in headers', 'gridd-plus' ),
 		'description' => esc_html__( 'If a header block has an anchor defined, this will add a link icon at the end of the headers when they are hovered so that users can easier link to sections of your pages.', 'gridd-plus' ),
-		'section'     => 'gridd_features',
+		'section'     => 'gridd_features_single_post',
 		'default'     => true,
 		'priority'    => 70,
 		'transport'   => 'refresh',

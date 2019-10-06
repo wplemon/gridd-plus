@@ -15,7 +15,7 @@ $sanitization = new Sanitize();
 Customizer::add_field(
 	[
 		'settings' => 'gridd_grid_header_mobile_override',
-		'section'  => 'gridd_grid_part_details_header',
+		'section'  => 'grid_part_details_header',
 		'type'     => 'checkbox',
 		'default'  => true,
 		'label'    => esc_html__( 'Enable Separate Grid for Mobile', 'gridd-plus' ),
@@ -25,7 +25,7 @@ Customizer::add_field(
 Customizer::add_field(
 	[
 		'settings'          => 'gridd_grid_header_mobile',
-		'section'           => 'gridd_grid_part_details_header',
+		'section'           => 'grid_part_details_header',
 		'type'              => 'gridd_grid',
 		'grid-part'         => 'header',
 		'label'             => esc_html__( 'Header Mobile Grid Settings', 'gridd-plus' ),
