@@ -49,12 +49,8 @@ Customizer::add_field(
 			'duplicate'          => 'gridd_grid',
 			'disablePartButtons' => [ 'edit' ],
 		],
-		'active_callback'   => [
-			[
-				'setting'  => 'gridd_custom_mobile_grid',
-				'value'    => true,
-				'operator' => '===',
-			],
-		],
+		'active_callback'   => function() {
+			return get_theme_mod( 'gridd_custom_mobile_grid' );
+		},
 	]
 );
