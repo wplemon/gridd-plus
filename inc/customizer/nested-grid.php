@@ -81,7 +81,7 @@ function gridd_add_nested_grid_options( $id ) {
 				"gridd_nested_grid_{$id}_template" => [
 					'selector'            => ".gridd-tp-nested-grid-{$id}",
 					'container_inclusive' => true,
-					'render_callback'     => function() {
+					'render_callback'     => function() use ( $id ) {
 						do_action( 'gridd_the_grid_part', "nested-grid-{$id}" );
 					},
 				],
