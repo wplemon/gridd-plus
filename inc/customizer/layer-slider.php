@@ -14,7 +14,7 @@ if ( ! class_exists( '\LS_Sliders' ) ) {
 $sliders = \LS_Sliders::find();
 foreach ( $sliders as $slider ) {
 	Customizer::add_section(
-		"gridd_grid_part_details_layer-slider-{$slider['id']}",
+		"grid_part_details_layer-slider-{$slider['id']}",
 		[
 			'title'   => sprintf(
 				/* translators: The grid-part label. */
@@ -32,7 +32,7 @@ foreach ( $sliders as $slider ) {
 			'settings'    => "gridd_layer_slider_no_settings_notice_{$slider['id']}",
 			'label'       => '',
 			'description' => '',
-			'section'     => "gridd_grid_part_details_layer-slider-{$slider['id']}",
+			'section'     => "grid_part_details_layer-slider-{$slider['id']}",
 			'default'     => esc_html__( "Layer Slider parts don't have any settings. If you want to modify your slider please use the LayerSlider plugin.", 'gridd-plus' ),
 		]
 	);

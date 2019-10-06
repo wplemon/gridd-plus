@@ -21,7 +21,7 @@ Customizer::add_field(
 				'details' => esc_html__( 'Controls the font-size for your breadcrumbs. This value is relative to the body font-size, so a value of 1em will have the same size as your content.', 'gridd-plus' ),
 			]
 		),
-		'section'     => 'gridd_grid_part_details_breadcrumbs',
+		'section'     => 'grid_part_details_breadcrumbs',
 		'default'     => 1,
 		'transport'   => 'postMessage',
 		'css_vars'    => '--brd-fs',

@@ -20,7 +20,7 @@ function gridd_add_nested_grid_options( $id ) {
 
 	$sanitization = new Sanitize();
 	Customizer::add_section(
-		"gridd_grid_part_details_nested-grid-{$id}",
+		"grid_part_details_nested-grid-{$id}",
 		[
 			'title'       => sprintf(
 				/* translators: The grid-part label. */
@@ -54,7 +54,7 @@ function gridd_add_nested_grid_options( $id ) {
 	Customizer::add_field(
 		[
 			'settings'          => "gridd_nested_grid_$id",
-			'section'           => "gridd_grid_part_details_nested-grid-$id",
+			'section'           => "grid_part_details_nested-grid-$id",
 			'type'              => 'gridd_grid',
 			'grid-part'         => "nested-grid-$id",
 			'label'             => esc_html__( 'Grid Settings', 'gridd-plus' ),
@@ -95,7 +95,7 @@ function gridd_add_nested_grid_options( $id ) {
 			'settings'    => "gridd_nested_grid_{$id}_padding",
 			'label'       => esc_attr__( 'Grid Container Padding', 'gridd-plus' ),
 			'description' => '',
-			'section'     => "gridd_grid_part_details_nested-grid-$id",
+			'section'     => "grid_part_details_nested-grid-$id",
 			'default'     => '0',
 			'transport'   => 'postMessage',
 			'css_vars'    => "--ns-gr-$id-pd",
@@ -108,7 +108,7 @@ function gridd_add_nested_grid_options( $id ) {
 			'settings'  => "gridd_nested_grid_{$id}_gap",
 			'label'     => esc_attr__( 'Grid Container Gap', 'gridd-plus' ),
 			'tooltip'   => esc_html__( 'If you have a background-color defined for this grid, then that color will be visible through these gaps which creates a unique appearance since each grid-part looks separate.', 'gridd-plus' ),
-			'section'   => "gridd_grid_part_details_nested-grid-$id",
+			'section'   => "grid_part_details_nested-grid-$id",
 			'default'   => '0',
 			'transport' => 'postMessage',
 			'css_vars'  => "--ns-gr-$id-gg",
@@ -122,7 +122,7 @@ function gridd_add_nested_grid_options( $id ) {
 			'label'       => esc_attr__( 'Grid Container max-width', 'gridd-plus' ),
 			'description' => esc_html__( 'The maximum width for this grid.', 'gridd-plus' ),
 			'tooltip'     => esc_html__( 'By setting the max-width to something other than 100% you get a boxed layout.', 'gridd-plus' ),
-			'section'     => "gridd_grid_part_details_nested-grid-$id",
+			'section'     => "grid_part_details_nested-grid-$id",
 			'default'     => '',
 			'transport'   => 'postMessage',
 			'css_vars'    => "--ns-gr-$id-mw",
@@ -135,7 +135,7 @@ function gridd_add_nested_grid_options( $id ) {
 			'settings'    => "gridd_nested_grid_{$id}_background_color",
 			'label'       => esc_attr__( 'Grid Container background-color', 'gridd-plus' ),
 			'description' => '',
-			'section'     => "gridd_grid_part_details_nested-grid-$id",
+			'section'     => "grid_part_details_nested-grid-$id",
 			'default'     => '#ffffff',
 			'transport'   => 'postMessage',
 			'css_vars'    => "--ns-gr-$id-bg",
@@ -151,7 +151,7 @@ function gridd_add_nested_grid_options( $id ) {
 			'settings'    => "gridd_nested_grid_{$id}_box_shadow",
 			'label'       => esc_html__( 'Drop Shadow Intensity', 'gridd-plus' ),
 			'description' => esc_html__( 'Set to "None" if you want to disable the shadow for this grid-part, or increase the intensity for a more dramatic effect.', 'gridd-plus' ),
-			'section'     => "gridd_grid_part_details_nested-grid-$id",
+			'section'     => "grid_part_details_nested-grid-$id",
 			'default'     => 'none',
 			'transport'   => 'postMessage',
 			'css_vars'    => "--ns-gr-$id-bs",
@@ -172,7 +172,7 @@ function gridd_add_nested_grid_options( $id ) {
 			'type'      => 'switch',
 			'settings'  => "gridd_nested_grid_{$id}_sticky",
 			'label'     => esc_attr__( 'Sticky', 'gridd-plus' ),
-			'section'   => "gridd_grid_part_details_nested-grid-$id",
+			'section'   => "grid_part_details_nested-grid-$id",
 			'default'   => false,
 			'transport' => 'auto',
 			'priority'  => 300,

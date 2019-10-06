@@ -13,7 +13,7 @@ Customizer::add_field(
 		'type'      => 'kirki-wcag-tc',
 		'settings'  => 'gridd_headers_color',
 		'label'     => esc_attr__( 'Headers Color', 'gridd-plus' ),
-		'section'   => 'gridd_grid_part_details_content',
+		'section'   => 'grid_part_details_content',
 		'default'   => '#000000',
 		'css_vars'  => '--hdcl',
 		'transport' => 'postMessage',
