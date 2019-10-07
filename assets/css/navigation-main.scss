@@ -4,12 +4,12 @@
 .gridd-tp-nav_ID {
 	.gridd-navigation {
 		a {
-			padding: calc(var(--nv-ID-ipd) / 1.618) var(--nv-ID-ipd);
+			padding: calc(var(--ipd) / 1.618) var(--ipd);
 		}
 
 		.gridd-toggle {
-            padding-top: var(--nv-ID-ipd);
-            padding-bottom: var(--nv-ID-ipd);
+            padding-top: var(--ipd);
+            padding-bottom: var(--ipd);
 		}
 	}
 }

@@ -5,18 +5,18 @@
 
 	.gridd-toggle-navigation {
 		&.gridd-toggle {
-			padding: var(--nv-ID-ipd);
-			height: var(--nv-ID-cis);
+			padding: var(--ipd);
+			height: var(--cis);
 			align-items: center;
 
 			svg {
-				width: var(--nv-ID-cis);
+				width: var(--cis);
 			}
 		}
 
 		.icon {
 			&.close {
-				transform: translateX(calc(.01px - var(--nv-ID-cis)));
+				transform: translateX(calc(.01px - var(--cis)));
 			}
 		}
 	}

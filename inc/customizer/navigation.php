@@ -39,13 +39,19 @@ function gridd_plus_nav_customizer_options( $id ) {
 			'description' => esc_html__( 'The font-size for this menu. This value is relevant to your body font-size, so a value of 1em will be the same size as you content.', 'gridd-plus' ),
 			'section'     => "grid_part_details_nav_$id",
 			'default'     => 1,
-			'transport'   => 'postMessage',
-			'css_vars'    => [ "--nv-$id-fs", '$em' ],
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element'       => ".gridd-tp-nav_$id",
+					'property'      => '--fs',
+					'value_pattern' => '$rem',
+				],
+			],
 			'choices'     => [
 				'min'    => 0.5,
 				'max'    => 2.5,
 				'step'   => 0.01,
-				'suffix' => 'em',
+				'suffix' => 'rem',
 			],
 		]
 	);
@@ -59,12 +65,18 @@ function gridd_plus_nav_customizer_options( $id ) {
 			'section'     => "grid_part_details_nav_$id",
 			'default'     => 1,
 			'transport'   => 'postMessage',
-			'css_vars'    => [ "--nv-$id-ipd", '$em' ],
+			'output'      => [
+				[
+					'element'       => ".gridd-tp-nav_$id",
+					'property'      => '--ipd',
+					'value_pattern' => '$rem',
+				],
+			],
 			'choices'     => [
 				'min'    => 0.2,
 				'max'    => 3,
 				'step'   => 0.01,
-				'suffix' => 'em',
+				'suffix' => 'rem',
 			],
 		]
 	);
@@ -83,7 +95,13 @@ function gridd_plus_nav_customizer_options( $id ) {
 				'step'   => .01,
 				'suffix' => 'em',
 			],
-			'css_vars'        => [ "--nv-$id-cis", '$em' ],
+			'output'      => [
+				[
+					'element'       => ".gridd-tp-nav_$id",
+					'property'      => '--cis',
+					'value_pattern' => '$rem',
+				],
+			],
 			'active_callback' => [
 				[
 					'setting'  => "gridd_grid_nav_{$id}_responsive_behavior",
