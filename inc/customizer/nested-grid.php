@@ -97,8 +97,13 @@ function gridd_add_nested_grid_options( $id ) {
 			'description' => '',
 			'section'     => "grid_part_details_nested-grid-$id",
 			'default'     => '0',
-			'transport'   => 'postMessage',
-			'css_vars'    => "--ns-gr-$id-pd",
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element'  => ".gridd-tp-nested-grid-$id",
+					'property' => '--pd',
+				],
+			],
 		]
 	);
 
@@ -111,7 +116,13 @@ function gridd_add_nested_grid_options( $id ) {
 			'section'   => "grid_part_details_nested-grid-$id",
 			'default'   => '0',
 			'transport' => 'postMessage',
-			'css_vars'  => "--ns-gr-$id-gg",
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element'  => ".gridd-tp-nested-grid-$id",
+					'property' => '--gg',
+				],
+			],
 		]
 	);
 
@@ -124,8 +135,13 @@ function gridd_add_nested_grid_options( $id ) {
 			'tooltip'     => esc_html__( 'By setting the max-width to something other than 100% you get a boxed layout.', 'gridd-plus' ),
 			'section'     => "grid_part_details_nested-grid-$id",
 			'default'     => '',
-			'transport'   => 'postMessage',
-			'css_vars'    => "--ns-gr-$id-mw",
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element'  => ".gridd-tp-nested-grid-$id",
+					'property' => '--mw',
+				],
+			],
 		]
 	);
 
@@ -137,8 +153,13 @@ function gridd_add_nested_grid_options( $id ) {
 			'description' => '',
 			'section'     => "grid_part_details_nested-grid-$id",
 			'default'     => '#ffffff',
-			'transport'   => 'postMessage',
-			'css_vars'    => "--ns-gr-$id-bg",
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element'  => ".gridd-tp-nested-grid-$id",
+					'property' => '--bg',
+				],
+			],
 			'choices'     => [
 				'alpha' => true,
 			],
@@ -153,8 +174,13 @@ function gridd_add_nested_grid_options( $id ) {
 			'description' => esc_html__( 'Set to "None" if you want to disable the shadow for this grid-part, or increase the intensity for a more dramatic effect.', 'gridd-plus' ),
 			'section'     => "grid_part_details_nested-grid-$id",
 			'default'     => 'none',
-			'transport'   => 'postMessage',
-			'css_vars'    => "--ns-gr-$id-bs",
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element'  => ".gridd-tp-nested-grid-$id",
+					'property' => '--bs',
+				],
+			],
 			'priority'    => 200,
 			'choices'     => [
 				'none' => esc_html__( 'None', 'gridd-plus' ),
