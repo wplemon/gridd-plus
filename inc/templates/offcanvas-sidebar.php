@@ -39,5 +39,7 @@ echo Theme::get_toggle_button( // phpcs:ignore WordPress.Security.EscapeOutput
 	$style->add_file( GRIDD_PLUS_PATH . '/assets/css/grid-part-offcanvas-sidebar.min.css' );
 	$style->the_css( 'gridd-inline-css-offcanvas-sidebar' );
 	?>
-	<?php dynamic_sidebar( 'offcanvas-sidebar' ); ?>
+	<div class="inner">
+		<?php dynamic_sidebar( 'offcanvas-sidebar' ); ?>
+	</div>
 </div>

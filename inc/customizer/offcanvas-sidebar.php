@@ -31,6 +31,7 @@ Customizer::add_field(
 		'section'     => 'gridd_plus_offcanvas_sidebar',
 		'default'     => false,
 		'transport'   => 'refresh',
+		'priority'    => 10,
 	]
 );
 
@@ -42,6 +43,32 @@ Customizer::add_field(
 		'section'   => 'gridd_plus_offcanvas_sidebar',
 		'default'   => false,
 		'transport' => 'refresh',
+		'priority'  => 20,
+	]
+);
+
+new \Kirki\Field\ReactColor(
+	[
+		'type'            => 'color',
+		'label'           => esc_html__( 'Background Color', 'gridd-plus' ),
+		'settings'        => 'gridd_plus_offcanvas_sidebar_bg_color',
+		'section'         => 'gridd_plus_offcanvas_sidebar',
+		'default'         => '#ffffff',
+		'priority'        => 30,
+		'transport'       => 'auto',
+		'output'          => [
+			[
+				'element'  => '.toggle-gridd-plus-offcanvas-sidebar,.gridd-tp-offcanvas-sidebar',
+				'property' => '--bg',
+			],
+		],
+		'choices'   => [
+			'formComponent' => 'TwitterPicker',
+			'colors'        => [ '#FFFFFF', '#fffcea', '#F9F9F9', '#f7f6e3', '#f7f7f7', '#f4f4e1', '#1A1A1A', '#000000' ],
+		],
+		'active_callback' => function() {
+			return get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable' );
+		},
 	]
 );
 
@@ -52,15 +79,17 @@ Customizer::add_field(
 		'label'           => esc_html__( 'Width', 'gridd-plus' ),
 		'section'         => 'gridd_plus_offcanvas_sidebar',
 		'default'         => '300px',
-		'transport'       => 'postMessage',
-		'css_vars'        => '--ocnv-w',
-		'active_callback' => [
+		'transport'       => 'auto',
+		'output'          => [
 			[
-				'setting'  => 'gridd_pluss_offcanvas_sidebar_enable',
-				'operator' => '===',
-				'value'    => true,
+				'element'  => '.toggle-gridd-plus-offcanvas-sidebar,.gridd-tp-offcanvas-sidebar',
+				'property' => '--w',
 			],
 		],
+		'active_callback' => function() {
+			return get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable' );
+		},
+		'priority'        => 40,
 	]
 );
 
@@ -76,13 +105,10 @@ Customizer::add_field(
 			'left'  => esc_html__( 'Left', 'gridd-plus' ),
 			'right' => esc_html__( 'Right', 'gridd-plus' ),
 		],
-		'active_callback' => [
-			[
-				'setting'  => 'gridd_pluss_offcanvas_sidebar_enable',
-				'operator' => '===',
-				'value'    => true,
-			],
-		],
+		'active_callback' => function() {
+			return get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable' );
+		},
+		'priority'        => 50,
 	]
 );
 
@@ -94,37 +120,17 @@ Customizer::add_field(
 		'description'     => __( 'Inner padding for this grid-part. Use any valid CSS value. For details on how padding works, please refer to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding" target="_blank" rel="nofollow">this article</a>.', 'gridd-plus' ),
 		'section'         => 'gridd_plus_offcanvas_sidebar',
 		'default'         => '1em',
-		'transport'       => 'postMessage',
-		'css_vars'        => '--ocnv-pd',
-		'active_callback' => [
+		'transport'       => 'auto',
+		'output'          => [
 			[
-				'setting'  => 'gridd_pluss_offcanvas_sidebar_enable',
-				'operator' => '===',
-				'value'    => true,
+				'element'  => '.toggle-gridd-plus-offcanvas-sidebar,.gridd-tp-offcanvas-sidebar',
+				'property' => '--pd',
 			],
 		],
-	]
-);
-
-Customizer::add_field(
-	[
-		'type'            => 'color',
-		'label'           => esc_html__( 'Background Color', 'gridd-plus' ),
-		'settings'        => 'gridd_plus_offcanvas_sidebar_bg_color',
-		'section'         => 'gridd_plus_offcanvas_sidebar',
-		'default'         => '#ffffff',
-		'transport'       => 'postMessage',
-		'css_vars'        => '--ocnv-bg',
-		'choices'         => [
-			'alpha' => true,
-		],
-		'active_callback' => [
-			[
-				'setting'  => 'gridd_pluss_offcanvas_sidebar_enable',
-				'operator' => '===',
-				'value'    => true,
-			],
-		],
+		'active_callback' => function() {
+			return get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable' );
+		},
+		'priority'        => 60,
 	]
 );
 
@@ -139,19 +145,24 @@ Customizer::add_field(
 			'setting' => 'gridd_plus_offcanvas_sidebar_bg_color',
 		],
 		'default'           => '#000000',
-		'transport'         => 'postMessage',
-		'css_vars'          => '--ocnv-cl',
-		'sanitize_callback' => [ $sanitization, 'color_hex' ],
-		'active_callback'   => [
+		'transport'       => 'auto',
+		'output'          => [
 			[
-				'setting'  => 'gridd_pluss_offcanvas_sidebar_enable',
-				'operator' => '===',
-				'value'    => true,
+				'element'  => '.toggle-gridd-plus-offcanvas-sidebar,.gridd-tp-offcanvas-sidebar',
+				'property' => '--cl',
 			],
 		],
+		'sanitize_callback' => [ $sanitization, 'color_hex' ],
+		'active_callback' => function() {
+			return get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable' );
+		},
+		'priority'        => 70,
 	]
 );
 
+/**
+ * WIP - Disabled this control for design reasons.
+ *
 Customizer::add_field(
 	[
 		'type'              => 'gridd-wcag-lc',
@@ -160,20 +171,22 @@ Customizer::add_field(
 		'section'           => 'gridd_plus_offcanvas_sidebar',
 		'default'           => '#0f5e97',
 		'transport'         => 'postMessage',
-		'css_vars'          => '--ocnv-lc',
+		'output'          => [
+			[
+				'element'  => '.toggle-gridd-plus-offcanvas-sidebar,.gridd-tp-offcanvas-sidebar',
+				'property' => '--lc',
+			],
+		],
 		'choices'           => [
 			'backgroundColor' => 'gridd_plus_offcanvas_sidebar_bg_color',
 			'textColor'       => 'gridd_plus_offcanvas_sidebar_color',
 		],
 		'sanitize_callback' => [ $sanitization, 'color_hex' ],
-		'active_callback'   => [
-			[
-				'setting'  => 'gridd_pluss_offcanvas_sidebar_enable',
-				'operator' => '===',
-				'value'    => true,
-			],
-		],
+		'active_callback' => function() {
+			return get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable' );
+		},
+		'priority'        => 80,
 	]
 );
-
+*/
 /* Omit closing PHP tag to avoid "Headers already sent" issues. */
