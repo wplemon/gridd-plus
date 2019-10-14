@@ -145,9 +145,8 @@ function gridd_add_nested_grid_options( $id ) {
 		]
 	);
 
-	Customizer::add_field(
+	new \Kirki\Field\ReactColor(
 		[
-			'type'        => 'color',
 			'settings'    => "gridd_nested_grid_{$id}_background_color",
 			'label'       => esc_attr__( 'Grid Container background-color', 'gridd-plus' ),
 			'description' => '',
@@ -161,7 +160,7 @@ function gridd_add_nested_grid_options( $id ) {
 				],
 			],
 			'choices'     => [
-				'alpha' => true,
+				'formComponent' => 'ChromePicker',
 			],
 		]
 	);
