@@ -19,7 +19,7 @@ Customizer::add_field(
 		'transport' => 'postMessage',
 		'priority'  => 45,
 		'choices'   => [
-			'setting' => 'gridd_grid_content_background_color',
+			'setting' => 'content_background_color',
 		],
 	]
 );
