@@ -32,7 +32,7 @@
 	bottom: 0;
 	pointer-events: none;
 	backface-visibility: hidden;
-	@include setScrolltopColors(var(--lc), white, var(--lch));
+	@include setScrolltopColors(var(--lc), white, var(--lc));
 
 	// prevent extra page height if content is smaller than viewport
 	// Firefox only
