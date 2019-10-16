@@ -76,23 +76,3 @@ Customizer::add_field(
 		'preset'      => $scales_presets,
 	]
 );
-
-Customizer::add_field(
-	[
-		'settings'    => 'remove_links_decoration',
-		'type'        => 'checkbox',
-		'label'       => esc_attr__( 'Do not underline links', 'gridd-plus' ),
-		'section'     => 'gridd_typography',
-		'default'     => false,
-		'priority'    => 110,
-	]
-);
-
-add_filter( 'gridd_style_css', function( $css, $context ) {
-	if ( 'main-styles' === $context ) {
-		if ( get_theme_mod( 'remove_links_decoration' ) ) {
-			$css .= 'a{text-decoration:none !important;';
-		}
-	}
-	return $css;
-}, 10, 2 );
