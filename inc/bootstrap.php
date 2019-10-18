@@ -117,5 +117,5 @@ new Post();
  */
 require_once GRIDD_PLUS_PATH . '/inc/updater/updater.php';
 
-require_once GRIDD_PLUS_PATH . '/inc/customizer/controls/control-wcag-linkcolor/bootstrap.php';
-require_once GRIDD_PLUS_PATH . '/inc/customizer/controls/control-wcag-textcolor/bootstrap.php';
+require_once GRIDD_PLUS_PATH . '/inc/customizer/control-wcag-linkcolor/bootstrap.php';
+require_once GRIDD_PLUS_PATH . '/inc/customizer/control-wcag-textcolor/bootstrap.php';
