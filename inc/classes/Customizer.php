@@ -39,7 +39,6 @@ class Customizer {
 	 * @return void
 	 */
 	public function include_files() {
-		require_once GRIDD_PLUS_PATH . '/inc/customizer/controls/kirki-wcag-tc/kirki-wcag-tc.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/breadcrumbs.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/features.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/footer.php';
@@ -122,10 +121,6 @@ class Customizer {
 		switch ( $args['type'] ) {
 			case 'gridd-wcag-lc':
 				$args['type'] = 'kirki-wcag-lc';
-				break;
-
-			case 'gridd-wcag-tc':
-				$args['type'] = 'kirki-wcag-tc';
 				break;
 		}
 

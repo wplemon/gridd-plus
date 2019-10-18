@@ -134,15 +134,14 @@ Customizer::add_field(
 	]
 );
 
-Customizer::add_field(
+new \WPLemon\Field\WCAGTextColor(
 	[
-		'type'              => 'gridd-wcag-tc',
 		'label'             => esc_html__( 'Text Color', 'gridd-plus' ),
 		'description'       => esc_html__( 'Select the color used for your menu items. Please choose a color with sufficient contrast with the selected background-color.', 'gridd-plus' ),
 		'settings'          => 'gridd_plus_offcanvas_sidebar_color',
 		'section'           => 'gridd_plus_offcanvas_sidebar',
 		'choices'           => [
-			'setting' => 'gridd_plus_offcanvas_sidebar_bg_color',
+			'backgroundColor' => 'gridd_plus_offcanvas_sidebar_bg_color',
 		],
 		'default'           => '#000000',
 		'transport'       => 'auto',

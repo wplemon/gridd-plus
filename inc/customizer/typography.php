@@ -8,9 +8,8 @@
 
 use Gridd\Customizer;
 
-Customizer::add_field(
+new \WPLemon\Field\WCAGTextColor(
 	[
-		'type'      => 'kirki-wcag-tc',
 		'settings'  => 'gridd_headers_color',
 		'label'     => esc_attr__( 'Headers Color', 'gridd-plus' ),
 		'section'   => 'grid_part_details_content',
@@ -19,7 +18,7 @@ Customizer::add_field(
 		'transport' => 'postMessage',
 		'priority'  => 45,
 		'choices'   => [
-			'setting' => 'content_background_color',
+			'backgroundColor' => 'content_background_color',
 		],
 	]
 );
