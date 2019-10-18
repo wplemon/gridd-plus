@@ -22,10 +22,6 @@ class Customizer {
 	public function __construct() {
 		add_action( 'after_setup_theme', [ $this, 'include_files' ] );
 
-		// Add filters for the kirki premium controls we're using.
-		add_filter( 'kirki_wcag_text_color_url', [ $this, 'wcag_text_color_url' ] );
-		add_filter( 'kirki_wcag_link_color_url', [ $this, 'wcag_link_color_url' ] );
-
 		add_filter( 'gridd_field_args', [ $this, 'field_args' ] );
 
 		add_action( 'customize_controls_print_styles', [ $this, 'customize_controls_print_styles' ] );
@@ -52,28 +48,6 @@ class Customizer {
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/sidebar.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/slider-revolution.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/typography.php';
-	}
-
-	/**
-	 * Change the URL for the kirki-wcag-tc control.
-	 *
-	 * @access public
-	 * @since 1.0
-	 * @return string
-	 */
-	public function wcag_text_color_url() {
-		return GRIDD_PLUS_URL . '/inc/customizer/controls/kirki-wcag-tc';
-	}
-
-	/**
-	 * Change the URL for the kirki-wcag-lc control.
-	 *
-	 * @access public
-	 * @since 1.0
-	 * @return string
-	 */
-	public function wcag_link_color_url() {
-		return GRIDD_PLUS_URL . '/inc/customizer/controls/kirki-wcag-lc';
 	}
 
 	/**
