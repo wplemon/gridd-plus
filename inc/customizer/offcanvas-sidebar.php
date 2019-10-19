@@ -93,9 +93,8 @@ Customizer::add_field(
 	]
 );
 
-Customizer::add_field(
+new \Kirki\Field\RadioButtonset(
 	[
-		'type'            => 'radio-buttonset',
 		'settings'        => 'gridd_pluss_offcanvas_sidebar_position',
 		'label'           => esc_html__( 'Position', 'gridd-plus' ),
 		'section'         => 'gridd_plus_offcanvas_sidebar',
