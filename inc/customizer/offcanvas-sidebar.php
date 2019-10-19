@@ -58,13 +58,13 @@ new \Kirki\Field\ReactColor(
 		'transport'       => 'auto',
 		'output'          => [
 			[
-				'element'  => '.toggle-gridd-plus-offcanvas-sidebar,.gridd-tp-offcanvas-sidebar',
+				'element'  => '#offcanvas-wrapper',
 				'property' => '--bg',
 			],
 		],
 		'choices'   => [
 			'formComponent' => 'TwitterPicker',
-			'colors'        => [ '#FFFFFF', '#fffcea', '#F9F9F9', '#f7f6e3', '#f7f7f7', '#f4f4e1', '#1A1A1A', '#000000' ],
+			'colors'        => [ '#FFFFFF', '#fffcea', '#F9F9F9', '#f7f6e3', '#f7f7f7', '#f4f4e1', '#1A1A1A', '#000000', '#FF6900', '#FCB900', '#7BDCB5', '#00D084', '#8ED1FC', '#0693E3', '#ABB8C3', '#EB144C', '#F78DA7', '#9900EF' ],
 		],
 		'active_callback' => function() {
 			return get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable' );
@@ -76,14 +76,14 @@ Customizer::add_field(
 	[
 		'type'            => 'dimension',
 		'settings'        => 'gridd_pluss_offcanvas_sidebar_width',
-		'label'           => esc_html__( 'Width', 'gridd-plus' ),
+		'label'           => esc_html__( 'Size', 'gridd-plus' ),
 		'section'         => 'gridd_plus_offcanvas_sidebar',
 		'default'         => '300px',
 		'transport'       => 'auto',
 		'output'          => [
 			[
-				'element'  => '.toggle-gridd-plus-offcanvas-sidebar,.gridd-tp-offcanvas-sidebar',
-				'property' => '--w',
+				'element'  => '#offcanvas-wrapper',
+				'property' => '--sz',
 			],
 		],
 		'active_callback' => function() {
@@ -101,8 +101,8 @@ new \Kirki\Field\RadioButtonset(
 		'default'         => 'left',
 		'transport'       => 'refresh',
 		'choices'         => [
-			'left'  => esc_html__( 'Left', 'gridd-plus' ),
-			'right' => esc_html__( 'Right', 'gridd-plus' ),
+			'left'   => esc_html__( 'Left', 'gridd-plus' ),
+			'right'  => esc_html__( 'Right', 'gridd-plus' ),
 		],
 		'active_callback' => function() {
 			return get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable' );
@@ -122,7 +122,7 @@ Customizer::add_field(
 		'transport'       => 'auto',
 		'output'          => [
 			[
-				'element'  => '.toggle-gridd-plus-offcanvas-sidebar,.gridd-tp-offcanvas-sidebar',
+				'element'  => '#offcanvas-wrapper',
 				'property' => '--pd',
 			],
 		],
@@ -146,7 +146,7 @@ new \WPLemon\Field\WCAGTextColor(
 		'transport'       => 'auto',
 		'output'          => [
 			[
-				'element'  => '.toggle-gridd-plus-offcanvas-sidebar,.gridd-tp-offcanvas-sidebar',
+				'element'  => '#offcanvas-wrapper',
 				'property' => '--cl',
 			],
 		],
@@ -158,33 +158,4 @@ new \WPLemon\Field\WCAGTextColor(
 	]
 );
 
-/**
- * WIP - Disabled this control for design reasons.
- *
-Customizer::add_field(
-	[
-		'type'              => 'gridd-wcag-lc',
-		'label'             => esc_html__( 'Links Color', 'gridd-plus' ),
-		'settings'          => 'gridd_plus_offcanvas_sidebar_links_color',
-		'section'           => 'gridd_plus_offcanvas_sidebar',
-		'default'           => '#0f5e97',
-		'transport'         => 'postMessage',
-		'output'          => [
-			[
-				'element'  => '.toggle-gridd-plus-offcanvas-sidebar,.gridd-tp-offcanvas-sidebar',
-				'property' => '--lc',
-			],
-		],
-		'choices'           => [
-			'backgroundColor' => 'gridd_plus_offcanvas_sidebar_bg_color',
-			'textColor'       => 'gridd_plus_offcanvas_sidebar_color',
-		],
-		'sanitize_callback' => [ $sanitization, 'color_hex' ],
-		'active_callback' => function() {
-			return get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable' );
-		},
-		'priority'        => 80,
-	]
-);
-*/
 /* Omit closing PHP tag to avoid "Headers already sent" issues. */

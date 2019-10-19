@@ -15,31 +15,34 @@ if ( ! get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable', false ) ) {
 	return;
 }
 ?>
-<?php
-/**
- * Prints the toggling button.
- * No need to escape this, there's zero user input.
- * Everything is hardcoded and things that need escaping
- * are properly escaped in the function itself.
- */
-echo Theme::get_toggle_button( // phpcs:ignore WordPress.Security.EscapeOutput
-	[
-		'context'           => [ 'offcanvas-sidebar' ],
-		'expanded_state_id' => 'griddPlusOffcanvasSidebar',
-		'expanded'          => 'false',
-		'label'             => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg><span class="screen-reader-text">' . esc_html__( 'Toggle Sidebar', 'gridd-plus' ) . '</span>',
-		'classes'           => [ 'toggle-gridd-plus-offcanvas-sidebar', 'position-' . get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) ],
-	]
-);
-?>
-
-<div <?php Theme::print_attributes( [ 'class' => 'gridd-tp gridd-tp-sidebar gridd-tp-offcanvas-sidebar position-' . get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) ], 'wrapper-offcanvas-sidebar' ); ?>>
+<div id="offcanvas-wrapper" class="position-<?php echo esc_attr( get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) ); ?>">
 	<?php
-	$style = Style::get_instance( 'grid-part/sidebar/offcanvas-sidebar' );
-	$style->add_file( GRIDD_PLUS_PATH . '/assets/css/grid-part-offcanvas-sidebar.min.css' );
-	$style->the_css( 'gridd-inline-css-offcanvas-sidebar' );
+	/**
+	 * Prints the toggling button.
+	 * No need to escape this, there's zero user input.
+	 * Everything is hardcoded and things that need escaping
+	 * are properly escaped in the function itself.
+	 */
+	echo Theme::get_toggle_button( // phpcs:ignore WordPress.Security.EscapeOutput
+		[
+			'context'           => [ 'offcanvas-sidebar' ],
+			'expanded_state_id' => 'griddPlusOffcanvasSidebar',
+			'expanded'          => 'false',
+			'label'             => '<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg><span class="screen-reader-text">' . esc_html__( 'Toggle Sidebar', 'gridd-plus' ) . '</span>',
+			'classes'           => [ 'toggle-gridd-plus-offcanvas-sidebar', 'position-' . get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) ],
+		]
+	);
 	?>
-	<div class="inner">
-		<?php dynamic_sidebar( 'offcanvas-sidebar' ); ?>
+
+	<div <?php Theme::print_attributes( [ 'class' => 'gridd-tp gridd-tp-sidebar gridd-tp-offcanvas-sidebar position-' . get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) ], 'wrapper-offcanvas-sidebar' ); ?>>
+		<?php
+		$style = Style::get_instance( 'grid-part/sidebar/offcanvas-sidebar' );
+		$style->add_file( GRIDD_PLUS_PATH . '/assets/css/grid-part-offcanvas-sidebar.min.css' );
+		$style->add_string( 'body{padding-' . get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) . ':2.5rem}' );
+		$style->the_css( 'gridd-inline-css-offcanvas-sidebar' );
+		?>
+		<div class="inner">
+			<?php dynamic_sidebar( 'offcanvas-sidebar' ); ?>
+		</div>
 	</div>
 </div>
