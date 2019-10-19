@@ -61,7 +61,8 @@ foreach ( array_keys( $scales ) as $scale ) {
 		],
 	];
 }
-Customizer::add_field(
+
+new \Kirki\Field\Select(
 	[
 		'settings'    => 'gridd_type_scale_preset',
 		'type'        => 'radio',

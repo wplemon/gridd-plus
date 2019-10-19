@@ -83,7 +83,7 @@ class Customizer {
 				$args['choices']     = [
 					'min'  => 1,
 					'max'  => 2.5,
-					'step' => 0.0001,
+					'step' => 0.001,
 				];
 				break;
 
