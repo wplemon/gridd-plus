@@ -38,7 +38,7 @@ if ( ! get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable', false ) ) {
 		<?php
 		$style = Style::get_instance( 'grid-part/sidebar/offcanvas-sidebar' );
 		$style->add_file( GRIDD_PLUS_PATH . '/assets/css/grid-part-offcanvas-sidebar.min.css' );
-		$style->add_string( 'body{padding-' . get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) . ':2.5rem}' );
+		$style->add_string( 'body{padding-' . get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) . ':calc(2.5rem + 2px);}' );
 		$style->the_css( 'gridd-inline-css-offcanvas-sidebar' );
 		?>
 		<div class="inner">
