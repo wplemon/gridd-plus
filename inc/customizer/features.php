@@ -18,7 +18,12 @@ Customizer::add_field(
 		'default'         => '60vh',
 		'priority'        => 25,
 		'transport'       => 'refresh',
-		'css_vars'        => '--fimg-fh',
+		'output'      => [
+			[
+				'element'  => ':root',
+				'property' => '--fimg-fh',
+			],
+		],
 		'transport'       => 'postMessage',
 		'active_callback' => [
 			[

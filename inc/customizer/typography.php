@@ -14,7 +14,12 @@ new \WPLemon\Field\WCAGTextColor(
 		'label'     => esc_attr__( 'Headers Color', 'gridd-plus' ),
 		'section'   => 'grid_part_details_content',
 		'default'   => '#000000',
-		'css_vars'  => '--hdcl',
+		'output'      => [
+			[
+				'element'  => ':root',
+				'property' => '--hdcl',
+			],
+		],
 		'transport' => 'postMessage',
 		'priority'  => 45,
 		'choices'   => [

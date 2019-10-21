@@ -24,7 +24,12 @@ Customizer::add_field(
 		'section'     => 'grid_part_details_breadcrumbs',
 		'default'     => 1,
 		'transport'   => 'postMessage',
-		'css_vars'    => '--brd-fs',
+		'output'      => [
+			[
+				'element'  => ':root',
+				'property' => '--brd-fs',
+			],
+		],
 		'choices'     => [
 			'min'    => .5,
 			'max'    => 2,
