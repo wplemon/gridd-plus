@@ -8,6 +8,11 @@
 
 namespace Gridd_Plus;
 
+// Make sure we have everything we need.
+if ( ! class_exists( '\Kirki\Field\ReactColor' ) ) {
+	return;
+}
+
 /**
  * The Gridd-Plus Autoloader.
  *
