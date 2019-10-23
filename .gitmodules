@@ -1,0 +1,4 @@
+[submodule "inc/customizer/control-wcag-linkcolor"]
+	url = https://gitlab.com/wplemon/control-wcag-linkcolor.git
+[submodule "inc/customizer/control-wcag-textcolor"]
+	url = https://gitlab.com/wplemon/control-wcag-textcolor.git
