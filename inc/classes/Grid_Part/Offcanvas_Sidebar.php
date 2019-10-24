@@ -62,7 +62,7 @@ class Offcanvas_Sidebar extends Grid_Part {
         $this->part = [
 			'label'    => esc_html__( 'Offcanvas Sidebar', 'gridd-plus' ),
 			'color'    => [ '#74BEA7', '#000' ],
-			'priority' => 60,
+			'priority' => 10,
 			'hidden'   => true,
 			'id'       => $this->id,
 		];
