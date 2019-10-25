@@ -18,7 +18,6 @@ Customizer::add_section(
 	[
 		'title'    => esc_html__( 'Offcanvas Sidebar', 'gridd-plus' ),
 		'priority' => 27,
-		'panel'    => 'gridd_options',
 	]
 );
 

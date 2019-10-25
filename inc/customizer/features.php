@@ -54,7 +54,7 @@ Customizer::add_field(
 		'settings'    => 'gridd_enable_totop',
 		'label'       => esc_attr__( 'Enable scroll-to-top button.', 'gridd-plus' ),
 		'description' => esc_html__( 'When on a long page shows a "Scroll-to-top" button on the bottom-right corner of the screen. Select "Desktop" to only show the button on large screens, "Show" to show the button on both large and small screens, or "Hidden" to disable the button.', 'gridd-plus' ),
-		'section'     => 'gridd_features',
+		'section'     => 'gridd_features_global',
 		'default'     => 'hidden',
 		'priority'    => 80,
 		'transport'   => 'refresh',
@@ -72,7 +72,7 @@ Customizer::add_field(
 		'settings'    => 'gridd_grid_widget_areas_number',
 		'label'       => esc_attr__( 'Number of custom widget areas', 'gridd-plus' ),
 		'description' => __( 'Select how many custom widget areas you want to add.', 'gridd-plus' ),
-		'section'     => 'gridd_features',
+		'section'     => 'gridd_features_global',
 		'default'     => 2,
 		'priority'    => 100,
 		'transport'   => 'postMessage',
@@ -93,7 +93,7 @@ foreach ( $range as $i ) {
 			/* translators: The widget-area number. */
 			'label'           => sprintf( esc_html__( 'Widget Area %d Name', 'gridd-plus' ), absint( $i ) ),
 			'tooltip'         => esc_html__( 'Enter a custom name if you want to easier identify this widget-area. Please note that changes will only be visible after you save the Customizer options and refresh this page.', 'gridd-plus' ),
-			'section'         => 'gridd_features',
+			'section'         => 'gridd_features_global',
 			/* translators: The widget-area number. */
 			'default'         => sprintf( esc_html__( 'Widget Area %d', 'gridd-plus' ), absint( $i ) ),
 			'transport'       => 'postMessage',
