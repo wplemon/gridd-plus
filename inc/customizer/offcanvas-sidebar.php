@@ -132,4 +132,23 @@ new \WPLemon\Field\WCAGTextColor(
 	]
 );
 
+new \Kirki\Field\RadioButtonset(
+	[
+		'settings'        => 'offcanvas_sidebar_visibility',
+		'label'           => esc_html__( 'Visibility', 'gridd-plus' ),
+		'section'         => 'gridd_plus_offcanvas_sidebar',
+		'default'         => 'always',
+		'transport'       => 'refresh',
+		'choices'         => [
+			'desktop' => esc_html__( 'Desktop', 'gridd-plus' ),
+			'mobile'  => esc_html__( 'Mobile', 'gridd-plus' ),
+			'always'  => esc_html__( 'Always', 'gridd-plus' ),
+		],
+		'active_callback' => function() {
+			return is_active_sidebar( 'offcanvas-sidebar' );
+		},
+		'priority'        => 80,
+	]
+);
+
 /* Omit closing PHP tag to avoid "Headers already sent" issues. */
