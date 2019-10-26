@@ -49,6 +49,7 @@ class Offcanvas_Sidebar extends Grid_Part {
 		add_action( 'gridd_the_grid_part', [ $this, 'render' ] );
 		add_action( 'get_sidebar', [ $this, 'get_sidebar' ] );
 		add_action( 'gridd_the_partial', [ $this, 'the_partial' ] );
+		add_filter( 'gridd_smart_grid_main_parts_order', [ $this, 'grid_parts_order' ] );
 	}
 
 	/**
@@ -147,6 +148,26 @@ class Offcanvas_Sidebar extends Grid_Part {
                 'label' => esc_html__( 'Offcanvas Sidebar', 'gridd-plus' ),
             ]
         );
+	}
+
+		/**
+	 * Change the position of the grid-part and put it right after the header.
+	 *
+	 * @access public
+	 * @since 1.2.0
+	 * @param array $parts An array of our ordered grid-parts.
+	 * @return array
+	 */
+	public function grid_parts_order( $parts ) {
+		$final_parts = [];
+		foreach ( $parts as $part ) {
+			$final_parts[] = $part;
+			if ( 'header' === $part ) {
+				$final_parts[] = 'offcanvas-sidebar';
+			}
+		}
+
+		return $final_parts;
 	}
 }
 
