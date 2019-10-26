@@ -50,6 +50,9 @@ class Offcanvas_Sidebar extends Grid_Part {
 		add_action( 'get_sidebar', [ $this, 'get_sidebar' ] );
 		add_action( 'gridd_the_partial', [ $this, 'the_partial' ] );
 		add_filter( 'gridd_smart_grid_main_parts_order', [ $this, 'grid_parts_order' ] );
+
+		// Add script.
+		add_filter( 'gridd_footer_inline_script_paths', [ $this, 'footer_inline_script_paths' ] );
 	}
 
 	/**
@@ -168,6 +171,21 @@ class Offcanvas_Sidebar extends Grid_Part {
 		}
 
 		return $final_parts;
+	}
+
+	/**
+	 * Adds the script to the footer.
+	 *
+	 * @access public
+	 * @since 1.2.0
+	 * @param array $paths Paths to scripts we want to load.
+	 * @return array
+	 */
+	public function footer_inline_script_paths( $paths ) {
+		if ( is_active_sidebar( 'offcanvas-sidebar' ) ) {
+			$paths[] = GRIDD_PLUS_PATH . '/assets/js/offcanvas.min.js';
+		}
+		return $paths;
 	}
 }
 
