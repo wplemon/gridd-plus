@@ -109,10 +109,16 @@
         color: var(--cl);
     }
 
-    a,
-    a:hover,
-    a:focus,
-    a:visited {
+    a {
         color: var(--cl)
+    }
+
+    .gridd-navigation {
+        a:hover,
+        a:focus,
+        a:active {
+            color: var(--bg);
+            background: var(--cl);
+        }
     }
 }
