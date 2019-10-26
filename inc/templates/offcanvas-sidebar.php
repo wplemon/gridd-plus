@@ -11,11 +11,11 @@ use Gridd\Style;
 use Gridd\Theme;
 
 // Early exit if we don't want to show the sidebar.
-if ( ! get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable', false ) ) {
+if ( ! is_active_sidebar( 'offcanvas-sidebar' ) && ! is_customize_preview() ) {
 	return;
 }
 ?>
-<div id="offcanvas-wrapper" class="position-<?php echo esc_attr( get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) ); ?>">
+<div id="offcanvas-wrapper" class="position-<?php echo esc_attr( get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) ); ?>" style="display:<?php echo ( is_active_sidebar( 'offcanvas-sidebar' ) ) ? 'block' : 'none'; ?>">
 	<?php
 	/**
 	 * Prints the toggling button.
@@ -34,15 +34,17 @@ if ( ! get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable', false ) ) {
 	);
 	?>
 
-	<div <?php Theme::print_attributes( [ 'class' => 'gridd-tp gridd-tp-sidebar gridd-tp-offcanvas-sidebar position-' . get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) ], 'wrapper-offcanvas-sidebar' ); ?>>
-		<?php
-		$style = Style::get_instance( 'grid-part/sidebar/offcanvas-sidebar' );
-		$style->add_file( GRIDD_PLUS_PATH . '/assets/css/grid-part-offcanvas-sidebar.min.css' );
-		$style->add_string( 'body{padding-' . get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) . ':calc(2.5rem + 2px);}#wpadminbar{padding-left:5em;}@media screen and (max-width:782px){#wpadminbar{padding-left:3em;}}' );
-		$style->the_css( 'gridd-inline-css-offcanvas-sidebar' );
-		?>
-		<div class="inner">
-			<?php dynamic_sidebar( 'offcanvas-sidebar' ); ?>
+	<?php if ( is_active_sidebar( 'offcanvas-sidebar' ) ) : ?>
+		<div <?php Theme::print_attributes( [ 'class' => 'gridd-tp gridd-tp-sidebar gridd-tp-offcanvas-sidebar position-' . get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) ], 'wrapper-offcanvas-sidebar' ); ?>>
+			<?php
+			Style::get_instance( 'grid-part/sidebar/offcanvas-sidebar' )
+				->add_file( GRIDD_PLUS_PATH . '/assets/css/grid-part-offcanvas-sidebar.min.css' )
+				->add_string( 'body{padding-' . get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) . ':calc(2.5rem + 2px);}#wpadminbar{padding-left:5em;}@media screen and (max-width:782px){#wpadminbar{padding-left:3em;}}' )
+				->the_css( 'gridd-inline-css-offcanvas-sidebar' );
+			?>
+			<div class="inner">
+				<?php dynamic_sidebar( 'offcanvas-sidebar' ); ?>
+			</div>
 		</div>
-	</div>
+	<?php endif; ?>
 </div>

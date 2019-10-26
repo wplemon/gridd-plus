@@ -21,31 +21,6 @@ Customizer::add_section(
 	]
 );
 
-Customizer::add_field(
-	[
-		'type'        => 'custom',
-		'settings'    => 'gridd_plus_offcanvas_sidebar_important_note',
-		'label'       => esc_html__( 'Important Note', 'gridd-plus' ),
-		'description' => esc_html__( 'You will need to assign some widgets to the "Offcanvas Sidebar" widget-area in order for the area to be visible.', 'gridd-plus' ),
-		'section'     => 'gridd_plus_offcanvas_sidebar',
-		'default'     => false,
-		'transport'   => 'refresh',
-		'priority'    => 10,
-	]
-);
-
-Customizer::add_field(
-	[
-		'type'      => 'checkbox',
-		'settings'  => 'gridd_pluss_offcanvas_sidebar_enable',
-		'label'     => esc_html__( 'Enable Off-Canvas Sidebar', 'gridd-plus' ),
-		'section'   => 'gridd_plus_offcanvas_sidebar',
-		'default'   => false,
-		'transport' => 'refresh',
-		'priority'  => 20,
-	]
-);
-
 new \Kirki\Field\ReactColor(
 	[
 		'type'            => 'color',
@@ -66,7 +41,7 @@ new \Kirki\Field\ReactColor(
 			'colors'        => \Gridd\Theme::get_colorpicker_palette( 'all' ),
 		],
 		'active_callback' => function() {
-			return get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable' );
+			return is_active_sidebar( 'offcanvas-sidebar' );
 		},
 	]
 );
@@ -86,7 +61,7 @@ Customizer::add_field(
 			],
 		],
 		'active_callback' => function() {
-			return get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable' );
+			return is_active_sidebar( 'offcanvas-sidebar' );
 		},
 		'priority'        => 40,
 	]
@@ -104,7 +79,7 @@ new \Kirki\Field\RadioButtonset(
 			'right'  => esc_html__( 'Right', 'gridd-plus' ),
 		],
 		'active_callback' => function() {
-			return get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable' );
+			return is_active_sidebar( 'offcanvas-sidebar' );
 		},
 		'priority'        => 50,
 	]
@@ -126,7 +101,7 @@ Customizer::add_field(
 			],
 		],
 		'active_callback' => function() {
-			return get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable' );
+			return is_active_sidebar( 'offcanvas-sidebar' );
 		},
 		'priority'        => 60,
 	]
@@ -151,7 +126,7 @@ new \WPLemon\Field\WCAGTextColor(
 		],
 		'sanitize_callback' => [ $sanitization, 'color_hex' ],
 		'active_callback' => function() {
-			return get_theme_mod( 'gridd_pluss_offcanvas_sidebar_enable' );
+			return is_active_sidebar( 'offcanvas-sidebar' );
 		},
 		'priority'        => 70,
 	]
