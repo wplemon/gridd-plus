@@ -15,7 +15,7 @@ if ( ! is_active_sidebar( 'offcanvas-sidebar' ) && ! is_customize_preview() ) {
 	return;
 }
 ?>
-<div id="offcanvas-wrapper" class="position-<?php echo esc_attr( get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) ); ?>" style="display:<?php echo ( is_active_sidebar( 'offcanvas-sidebar' ) ) ? 'block' : 'none'; ?>">
+<div id="offcanvas-wrapper" class="position-<?php echo esc_attr( get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) ); ?>">
 	<?php
 	/**
 	 * Prints the toggling button.
