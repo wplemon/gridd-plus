@@ -14,6 +14,9 @@ use Gridd\Theme;
 if ( ! is_active_sidebar( 'offcanvas-sidebar' ) && ! is_customize_preview() ) {
 	return;
 }
+if ( is_customize_preview() && ! is_active_sidebar( 'offcanvas-sidebar' ) ) {
+	echo '<style>#offcanvas-wrapper{display:none!important;};</style>';
+}
 ?>
 <div id="offcanvas-wrapper" class="position-<?php echo esc_attr( get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) ); ?>" tabindex="0">
 	<?php
