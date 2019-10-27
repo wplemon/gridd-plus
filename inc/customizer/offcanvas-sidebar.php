@@ -38,7 +38,7 @@ new \Kirki\Field\ReactColor(
 		],
 		'choices'   => [
 			'formComponent' => 'TwitterPicker',
-			'colors'        => \Gridd\Theme::get_colorpicker_palette( 'all' ),
+			'colors'        => \Gridd\Theme::get_colorpicker_palette(),
 		],
 		'active_callback' => function() {
 			return is_active_sidebar( 'offcanvas-sidebar' );
