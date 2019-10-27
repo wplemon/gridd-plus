@@ -52,3 +52,16 @@ function gridd_plus_bootstrap() {
 	require_once GRIDD_PLUS_PATH . '/inc/bootstrap.php';
 }
 add_action( 'gridd_setup', 'gridd_plus_bootstrap' );
+
+/**
+ * Filter sidebars number.
+ * 
+ * This needs to be in the main plugin file because of filter priorities.
+ *
+ * @since 1.2.0
+ * @return int
+ */
+function gridd_plus_sidebars_number() {
+	return (int) get_theme_mod( 'gridd_grid_widget_areas_number', 3 );
+}
+add_filter( 'gridd_get_number_of_widget_areas', 'gridd_plus_sidebars_number' );

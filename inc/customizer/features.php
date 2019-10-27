@@ -71,9 +71,9 @@ Customizer::add_field(
 		'type'        => 'slider',
 		'settings'    => 'gridd_grid_widget_areas_number',
 		'label'       => esc_attr__( 'Number of custom widget areas', 'gridd-plus' ),
-		'description' => __( 'Select how many custom widget areas you want to add.', 'gridd-plus' ),
+		'description' => __( 'Select how many custom widget areas you want to add. Please note that you will have to save your settings and reload the customizer for the changes to take effect.', 'gridd-plus' ),
 		'section'     => 'gridd_features_global',
-		'default'     => 2,
+		'default'     => 3,
 		'priority'    => 100,
 		'transport'   => 'postMessage',
 		'choices'     => [
