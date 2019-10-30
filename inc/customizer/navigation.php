@@ -44,14 +44,14 @@ function gridd_plus_nav_customizer_options( $id ) {
 				[
 					'element'       => ".gridd-tp-nav_$id",
 					'property'      => '--fs',
-					'value_pattern' => '$rem',
+					'value_pattern' => '$em',
 				],
 			],
 			'choices'     => [
 				'min'    => 0.5,
 				'max'    => 2.5,
 				'step'   => 0.01,
-				'suffix' => 'rem',
+				'suffix' => 'em',
 			],
 		]
 	);
@@ -69,14 +69,14 @@ function gridd_plus_nav_customizer_options( $id ) {
 				[
 					'element'       => ".gridd-tp-nav_$id",
 					'property'      => '--ipd',
-					'value_pattern' => '$rem',
+					'value_pattern' => '$em',
 				],
 			],
 			'choices'     => [
 				'min'    => 0.2,
 				'max'    => 3,
 				'step'   => 0.01,
-				'suffix' => 'rem',
+				'suffix' => 'em',
 			],
 		]
 	);
@@ -99,7 +99,7 @@ function gridd_plus_nav_customizer_options( $id ) {
 				[
 					'element'       => ".gridd-tp-nav_$id",
 					'property'      => '--cis',
-					'value_pattern' => '$rem',
+					'value_pattern' => '$em',
 				],
 			],
 			'active_callback' => [
