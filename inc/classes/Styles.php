@@ -78,7 +78,6 @@ class Styles {
 				$responsive_mode       = get_theme_mod( "gridd_grid_nav_{$nav_id}_responsive_behavior", 'desktop-normal-mobile-hidden' );
 				$added_vertical_styles = false;
 				$style->add_file( GRIDD_PLUS_PATH . '/assets/css/navigation-main.min.css' );
-				$style->add_file( GRIDD_PLUS_PATH . '/assets/css/navigation-hover.min.css' );
 				if ( false !== strpos( $responsive_mode, 'desktop-normal' ) ) {
 					if ( get_theme_mod( "gridd_grid_nav_{$nav_id}_vertical", false ) ) {
 						$style->add_file( GRIDD_PLUS_PATH . '/assets/css/navigation-vertical.min.css' );
