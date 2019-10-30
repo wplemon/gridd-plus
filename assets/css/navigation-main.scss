@@ -7,6 +7,20 @@
 			padding: calc(var(--ipd) / 1.618) var(--ipd);
 		}
 
+
+		.menu-item-has-children,
+		.page_item_has_children {
+			a {
+				body:not(.rtl) & {
+					padding-right: calc(var(--ipd) / 4 );
+				}
+
+				.rtl & {
+					padding-left: calc(var(--ipd) / 4 );
+				}
+			}
+		}
+
 		.gridd-toggle {
             padding-top: var(--ipd);
             padding-bottom: var(--ipd);
