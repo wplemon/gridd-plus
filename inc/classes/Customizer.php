@@ -76,17 +76,6 @@ class Customizer {
 				}
 				break;
 
-			case 'gridd_type_scale':
-				$args['type']        = 'slider';
-				$args['label']       = '';
-				$args['description'] = '';
-				$args['choices']     = [
-					'min'  => 1,
-					'max'  => 2.5,
-					'step' => 0.001,
-				];
-				break;
-
 			case 'gridd_featured_image_mode_singular':
 				$args['choices']['fixed'] = esc_html__( 'Fixed', 'gridd-plus' );
 				break;
