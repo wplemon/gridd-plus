@@ -10,21 +10,24 @@ use Gridd\Customizer;
 
 new \WPLemon\Field\WCAGTextColor(
 	[
-		'settings'  => 'gridd_headers_color',
-		'label'     => esc_attr__( 'Headers Color', 'gridd-plus' ),
-		'section'   => 'grid_part_details_content',
-		'default'   => '#000000',
+		'settings'        => 'gridd_headers_color',
+		'label'           => esc_attr__( 'Headers Color', 'gridd-plus' ),
+		'section'         => 'grid_part_details_content',
+		'default'         => '#000000',
 		'output'      => [
 			[
 				'element'  => ':root',
 				'property' => '--hdcl',
 			],
 		],
-		'transport' => 'postMessage',
-		'priority'  => 45,
-		'choices'   => [
+		'transport'       => 'postMessage',
+		'priority'        => 45,
+		'choices'         => [
 			'backgroundColor' => 'content_background_color',
 		],
+		'active_callback' => function() {
+			return get_theme_mod( 'content_custom_options', false );
+		},
 	]
 );
 

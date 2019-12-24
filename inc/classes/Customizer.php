@@ -81,12 +81,6 @@ class Customizer {
 				break;
 		}
 
-		switch ( $args['type'] ) {
-			case 'gridd-wcag-lc':
-				$args['type'] = 'kirki-wcag-lc';
-				break;
-		}
-
 		return $args;
 	}
 
