@@ -5,17 +5,14 @@
  * @package Gridd
  */
 
-namespace Gridd_Plus\Grid_Part;
-
-use Gridd\Grid_Part;
-use Gridd\Rest;
+namespace Gridd_Plus;
 
 /**
- * The Gridd\Grid_Part\Sidebar object.
+ * The Gridd_Plus\Offcanvas_Sidebar object.
  *
  * @since 1.0
  */
-class Offcanvas_Sidebar extends Grid_Part {
+class Offcanvas_Sidebar extends \Gridd\Grid_Part {
 
 	/**
 	 * Have the global styles already been added?
@@ -52,7 +49,7 @@ class Offcanvas_Sidebar extends Grid_Part {
 		add_filter( 'gridd_smart_grid_main_parts_order', [ $this, 'grid_parts_order' ] );
 
 		// Add script.
-		add_filter( 'gridd_footer_inline_script_paths', [ $this, 'footer_inline_script_paths' ] );
+		add_action( 'wp_footer', [ $this, 'footer_inline_script' ] );
 	}
 
 	/**
@@ -94,7 +91,7 @@ class Offcanvas_Sidebar extends Grid_Part {
 	 */
 	public function render( $part ) {
 		if ( 'offcanvas-sidebar' === $part ) {
-			if ( Rest::is_partial_deferred( $part ) ) {
+			if ( \Gridd\Rest::is_partial_deferred( $part ) ) {
 				echo '<div class="gridd-tp gridd-tp-' . esc_attr( $part ) . ' gridd-rest-api-placeholder"></div>';
 				return;
 			}
@@ -147,16 +144,16 @@ class Offcanvas_Sidebar extends Grid_Part {
 
 						if ( 'desktop' === get_theme_mod( 'offcanvas_sidebar_visibility', 'always' ) ) {
 							$style->add_string( '@media only screen and (min-width:' . get_theme_mod( 'gridd_mobile_breakpoint', '992px' ) . '){' );
-							$style->add_file( GRIDD_PLUS_PATH . '/assets/css/grid-part-offcanvas-sidebar.min.css' );
+							$style->add_string( $this->get_styles() );
 							$style->add_string( 'body{padding-' . get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) . ':calc(2.25em + 2px);}#wpadminbar{padding-left:5em;}@media screen and (max-width:782px){#wpadminbar{padding-left:3em;}}' );
 							$style->add_string( '}' );
 						} elseif ( 'mobile' === get_theme_mod( 'offcanvas_sidebar_visibility', 'always' ) ) {
 							$style->add_string( '@media only screen and (max-width:' . get_theme_mod( 'gridd_mobile_breakpoint', '992px' ) . '){' );
-							$style->add_file( GRIDD_PLUS_PATH . '/assets/css/grid-part-offcanvas-sidebar.min.css' );
+							$style->add_string( $this->get_styles() );
 							$style->add_string( 'body{padding-' . get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) . ':calc(2.25em + 2px);}#wpadminbar{padding-left:5em;}@media screen and (max-width:782px){#wpadminbar{padding-left:3em;}}' );
 							$style->add_string( '}' );
 						} else {
-							$style->add_file( GRIDD_PLUS_PATH . '/assets/css/grid-part-offcanvas-sidebar.min.css' );
+							$style->add_string( $this->get_styles() );
 							$style->add_string( 'body{padding-' . get_theme_mod( 'gridd_pluss_offcanvas_sidebar_position', 'left' ) . ':calc(2.25em + 2px);}#wpadminbar{padding-left:5em;}@media screen and (max-width:782px){#wpadminbar{padding-left:3em;}}' );
 						}
 
@@ -201,7 +198,7 @@ class Offcanvas_Sidebar extends Grid_Part {
 	 * @return void
 	 */
 	public function register_rest_api_partials() {
-		Rest::register_partial(
+		\Gridd\Rest::register_partial(
 			[
 				'id'    => 'offcanvas-sidebar',
 				'label' => esc_html__( 'Offcanvas Sidebar', 'gridd-plus' ),
@@ -234,14 +231,24 @@ class Offcanvas_Sidebar extends Grid_Part {
 	 *
 	 * @access public
 	 * @since 2.0.0
-	 * @param array $paths Paths to scripts we want to load.
-	 * @return array
+	 * @return void
 	 */
-	public function footer_inline_script_paths( $paths ) {
-		if ( is_active_sidebar( 'offcanvas-sidebar' ) ) {
-			$paths[] = GRIDD_PLUS_PATH . '/assets/js/offcanvas.min.js';
+	public function footer_inline_script() {
+		if ( ! is_active_sidebar( 'offcanvas-sidebar' ) ) {
+			return;
 		}
-		return $paths;
+		echo '<script>document.getElementById("offcanvas-wrapper").addEventListener("focusout",function(e){!document.getElementById("offcanvas-wrapper").contains(e.relatedTarget)&&document.querySelector(".toggle-gridd-plus-offcanvas-sidebar").classList.contains("toggled-on")&&document.querySelector(".toggle-gridd-plus-offcanvas-sidebar").click()});</script>';
+	}
+
+	/**
+	 * Gets the styles.
+	 *
+	 * @access public
+	 * @since 2.0.0
+	 * @return string
+	 */
+	public function get_styles() {
+		return '#offcanvas-wrapper{position:fixed;height:100%;background-color:var(--bg);z-index:999999;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:nowrap;flex-wrap:nowrap;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;color:var(--cl);top:0}#offcanvas-wrapper.position-left{left:-1px}#offcanvas-wrapper.position-right{right:-1px}#offcanvas-wrapper:after,#offcanvas-wrapper:before{background:var(--cl);opacity:.1;content:" ";width:1px;height:100%;left:0;position:absolute}#offcanvas-wrapper:after{left:auto;right:0}.toggle-gridd-plus-offcanvas-sidebar{background:0 0;-webkit-box-shadow:0;box-shadow:0;border-color:transparent;padding:.625em;border-radius:0}.toggle-gridd-plus-offcanvas-sidebar svg{fill:var(--cl);width:1em;height:1em}.toggle-gridd-plus-offcanvas-sidebar:active,.toggle-gridd-plus-offcanvas-sidebar:focus,.toggle-gridd-plus-offcanvas-sidebar:hover{-webkit-box-shadow:none;box-shadow:none;border-color:transparent}.toggle-gridd-plus-offcanvas-sidebar.toggled-on,.toggle-gridd-plus-offcanvas-sidebar:active,.toggle-gridd-plus-offcanvas-sidebar:focus,.toggle-gridd-plus-offcanvas-sidebar[aria-expanded=true]{background-color:var(--cl)}.toggle-gridd-plus-offcanvas-sidebar.toggled-on svg,.toggle-gridd-plus-offcanvas-sidebar:active svg,.toggle-gridd-plus-offcanvas-sidebar:focus svg,.toggle-gridd-plus-offcanvas-sidebar[aria-expanded=true] svg{fill:var(--bg)}.toggle-gridd-plus-offcanvas-sidebar.toggled-on+.gridd-tp-offcanvas-sidebar,.toggle-gridd-plus-offcanvas-sidebar[aria-expanded=true]+.gridd-tp-offcanvas-sidebar{display:-webkit-box;display:-ms-flexbox;display:flex}.gridd-tp.gridd-tp-offcanvas-sidebar{width:var(--sz);max-width:100vw;z-index:999999;height:100%;overflow-y:auto;overflow-x:hidden;display:none;position:relative;margin-left:-1px;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}.gridd-tp.gridd-tp-offcanvas-sidebar .inner{padding:var(--pd)}.gridd-tp.gridd-tp-offcanvas-sidebar:before{background:var(--cl);opacity:.1;content:" ";width:1px;height:100%;left:0;position:absolute}.gridd-tp.gridd-tp-offcanvas-sidebar h1,.gridd-tp.gridd-tp-offcanvas-sidebar h2,.gridd-tp.gridd-tp-offcanvas-sidebar h3,.gridd-tp.gridd-tp-offcanvas-sidebar h4,.gridd-tp.gridd-tp-offcanvas-sidebar h5,.gridd-tp.gridd-tp-offcanvas-sidebar h6{color:var(--cl)}.gridd-tp.gridd-tp-offcanvas-sidebar a{color:var(--cl)}';
 	}
 }
 

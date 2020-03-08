@@ -59,7 +59,7 @@ Plugin::get_instance();
 new Grid_Part\Nested_Grid();
 new Grid_Part\Layer_Slider();
 new Grid_Part\Slider_Revolution();
-new Grid_Part\Offcanvas_Sidebar();
+new \Gridd_Plus\Offcanvas_Sidebar();
 new \Gridd_Plus\Breadcrumbs();
 
 /**
