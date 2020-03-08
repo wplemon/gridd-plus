@@ -12,9 +12,9 @@ new \WPLemon\Field\WCAGTextColor(
 	[
 		'settings'        => 'gridd_headers_color',
 		'label'           => esc_attr__( 'Headers Color', 'gridd-plus' ),
-		'section'         => 'grid_part_details_content',
+		'section'         => 'content',
 		'default'         => '#000000',
-		'output'      => [
+		'output'          => [
 			[
 				'element'  => ':root',
 				'property' => '--hdcl',

@@ -13,11 +13,10 @@ use Gridd\Customizer\Sanitize;
 
 $sanitization = new Sanitize();
 
-Customizer::add_field(
+new \Kirki\Field\Checkbox(
 	[
 		'settings' => 'gridd_custom_mobile_grid',
 		'section'  => 'gridd_grid',
-		'type'     => 'checkbox',
 		'label'    => esc_html__( 'Enable custom grid for small viewports', 'gridd-plus' ),
 		'tooltip'  => esc_html__( 'If you want to customize the way your grid will be shown in mobile and small devices, you can enable this option and create a separate grid for mobile.', 'gridd-plus' ),
 		'default'  => false,
@@ -31,7 +30,7 @@ Customizer::add_field(
 
 Customizer::add_field(
 	[
-		'settings'          => 'gridd_grid_mobile',
+		'settings'          => 'mobile',
 		'section'           => 'gridd_grid',
 		'type'              => 'gridd_grid',
 		'grid-part'         => false,

@@ -56,10 +56,6 @@ class Styles {
 	 */
 	public function gridd_style( $style ) {
 		switch ( $style->context ) {
-			case 'grid-part/breadcrumbs':
-				$style->add_file( GRIDD_PLUS_PATH . '/assets/css/grid-part-breadcrumbs.min.css' );
-				break;
-
 			case 'main-styles':
 				$style->add_file( GRIDD_PLUS_PATH . '/assets/css/typography.min.css' );
 				$style->add_file( GRIDD_PLUS_PATH . '/assets/css/links.min.css' );

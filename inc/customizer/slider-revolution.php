@@ -13,8 +13,8 @@ if ( ! class_exists( '\RevSliderSlider' ) ) {
 }
 $sliders = new \RevSliderSlider();
 foreach ( $sliders->getArrSliders() as $slider ) {
-	Customizer::add_section(
-		'grid_part_details_slider-revolution-' . $slider->getAlias(),
+	new \Kirki\Section(
+		'slider-revolution-' . $slider->getAlias(),
 		[
 			'title'   => sprintf(
 				/* translators: The grid-part label. */
@@ -29,10 +29,10 @@ foreach ( $sliders->getArrSliders() as $slider ) {
 	Customizer::add_field(
 		[
 			'type'        => 'custom',
-			'settings'    => 'gridd_grid_part_details_slider-revolution-no-options-notice' . $slider->getAlias(),
+			'settings'    => 'gridd_slider-revolution-no-options-notice' . $slider->getAlias(),
 			'label'       => '',
 			'description' => '',
-			'section'     => 'grid_part_details_slider-revolution-' . $slider->getAlias(),
+			'section'     => 'slider-revolution-' . $slider->getAlias(),
 			'default'     => esc_html__( "Slider Revolution parts don't have any settings. If you want to modify your slider please use the Slider Revolution plugin.", 'gridd-plus' ),
 		]
 	);

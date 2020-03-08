@@ -22,7 +22,7 @@ class Customizer {
 	public function __construct() {
 		add_action( 'after_setup_theme', [ $this, 'include_files' ] );
 
-		add_filter( 'gridd_field_args', [ $this, 'field_args' ] );
+		add_action( 'customize_register', [ $this, 'customize_register' ] );
 
 		add_action( 'customize_controls_print_styles', [ $this, 'customize_controls_print_styles' ] );
 	}
@@ -35,12 +35,12 @@ class Customizer {
 	 * @return void
 	 */
 	public function include_files() {
+		require_once GRIDD_PLUS_PATH . '/inc/customizer/customizer.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/breadcrumbs.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/features.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/footer.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/grid.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/header.php';
-		require_once GRIDD_PLUS_PATH . '/inc/customizer/layer-slider.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/nav-handheld.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/navigation.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/nested-grid.php';
@@ -55,33 +55,17 @@ class Customizer {
 	 *
 	 * @access public
 	 * @since 1.0
-	 * @param array $args The field arguments.
-	 * @return array
+	 * @param WP_Customize_Manager $wp_customize The customizer object.
+	 * @return void
 	 */
-	public function field_args( $args ) {
-		switch ( $args['settings'] ) {
-			case 'gridd_header_grid':
-				$args['choices']['duplicate'] = 'gridd_grid_header_mobile';
-				break;
+	public function customize_register( $wp_customize ) {
 
-			case 'gridd_footer_grid':
-				$args['choices']['duplicate'] = 'gridd_grid_footer_mobile';
-				break;
-
-			case 'gridd_grid_nav-handheld_parts':
-				$args['choices']['widget-area'] = esc_html__( 'Widget Area', 'gridd-plus' );
-				// If WooCommerce is installed, add another item for the Cart.
-				if ( class_exists( 'WooCommerce' ) ) {
-					$args['choices']['woo-cart'] = esc_html__( 'Cart', 'gridd-plus' );
-				}
-				break;
-
-			case 'gridd_featured_image_mode_singular':
-				$args['choices']['fixed'] = esc_html__( 'Fixed', 'gridd-plus' );
-				break;
+		$wp_customize->get_control( 'header_grid' )->choices['duplicate']  = 'header_mobile';
+		$wp_customize->get_control( 'footer__grid' )->choices['duplicate'] = 'footer__mobile';
+		if ( class_exists( 'WooCommerce' ) ) {
+			$wp_customize->get_control( 'nav-handheld_parts' )->choices['woo-cart'] = esc_html__( 'Cart', 'gridd-plus' );
 		}
-
-		return $args;
+		$wp_customize->get_control( 'gridd_featured_image_mode_singular' )->choices['fixed'] = esc_html__( 'Fixed', 'gridd-plus' );
 	}
 
 	/**
@@ -92,6 +76,6 @@ class Customizer {
 	 * @return void
 	 */
 	public function customize_controls_print_styles() {
-		wp_enqueue_style( 'gridd-plus-customizer', GRIDD_PLUS_URL . '/assets/css/customizer.css', array(), GRIDD_PLUS_VERSION );
+		wp_enqueue_style( 'gridd-plus-customizer', GRIDD_PLUS_URL . '/assets/css/customizer.css', [], GRIDD_PLUS_VERSION );
 	}
 }

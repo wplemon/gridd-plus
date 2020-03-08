@@ -13,7 +13,7 @@ $sanitization = new Sanitize();
 /**
  * Add Customizer Sections.
  */
-Customizer::add_section(
+new \Kirki\Section(
 	'gridd_plus_offcanvas_sidebar',
 	[
 		'title'    => esc_html__( 'Offcanvas Sidebar', 'gridd-plus' ),
@@ -36,7 +36,7 @@ new \Kirki\Field\ReactColor(
 				'property' => '--bg',
 			],
 		],
-		'choices'   => [
+		'choices'         => [
 			'formComponent' => 'TwitterPicker',
 			'colors'        => \Gridd\Theme::get_colorpicker_palette(),
 		],
@@ -75,8 +75,8 @@ new \Kirki\Field\RadioButtonset(
 		'default'         => 'left',
 		'transport'       => 'refresh',
 		'choices'         => [
-			'left'   => esc_html__( 'Left', 'gridd-plus' ),
-			'right'  => esc_html__( 'Right', 'gridd-plus' ),
+			'left'  => esc_html__( 'Left', 'gridd-plus' ),
+			'right' => esc_html__( 'Right', 'gridd-plus' ),
 		],
 		'active_callback' => function() {
 			return is_active_sidebar( 'offcanvas-sidebar' );
@@ -117,18 +117,18 @@ new \WPLemon\Field\WCAGTextColor(
 			'backgroundColor' => 'gridd_plus_offcanvas_sidebar_bg_color',
 		],
 		'default'           => '#000000',
-		'transport'       => 'auto',
-		'output'          => [
+		'transport'         => 'auto',
+		'output'            => [
 			[
 				'element'  => '#offcanvas-wrapper',
 				'property' => '--cl',
 			],
 		],
 		'sanitize_callback' => [ $sanitization, 'color_hex' ],
-		'active_callback' => function() {
+		'active_callback'   => function() {
 			return is_active_sidebar( 'offcanvas-sidebar' );
 		},
-		'priority'        => 70,
+		'priority'          => 70,
 	]
 );
 

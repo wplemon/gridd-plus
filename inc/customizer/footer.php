@@ -12,23 +12,24 @@ use Gridd\Customizer\Sanitize;
 
 $sanitization = new Sanitize();
 
-Customizer::add_field(
+new \Kirki\Field\Checkbox(
 	[
-		'settings'        => 'gridd_copy_footer_grid_to_mobile',
-		'type'            => 'custom',
-		'label'           => '',
-		'section'         => 'grid_part_details_footer',
-		'default'         => '<div style="margin-bottom:1em;"><button class="button-gridd-copy-grid-setting button button-primary button-large" data-from="gridd_footer_grid" data-to="gridd_grid_footer_mobile">' . esc_html__( 'Copy desktop grid to mobile', 'gridd-plus' ) . '</button></div>',
+		'settings' => 'footer_mobile_grid_override',
+		'label'    => esc_html__( 'Override Mobile Footer Grid', 'gridd-plus' ),
+		'section'  => 'footer_grid',
+		'default'  => false,
+		'priority' => 100,
 	]
 );
 
 Customizer::add_field(
 	[
-		'settings'          => 'gridd_grid_footer_mobile',
-		'section'           => 'grid_part_details_footer',
+		'settings'          => 'footer_mobile',
+		'section'           => 'footer_grid',
 		'type'              => 'gridd_grid',
+		'priority'          => 100,
 		'grid-part'         => 'footer',
-		'label'             => esc_html__( 'Footer Mobile Grid Settings', 'gridd-plus' ),
+		'label'             => esc_html__( 'Footer Mobile Grid', 'gridd-plus' ),
 		'description'       => sprintf(
 			/* translators: Link attributes. */
 			__( 'Edit settings for the footer grid. For more information and documentation on how the grid works, please read <a %s>this article</a>.', 'gridd-plus' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -54,14 +55,17 @@ Customizer::add_field(
 			],
 		],
 		'sanitize_callback' => [ $sanitization, 'grid' ],
+		'active_callback'   => function() {
+			return get_theme_mod( 'footer_mobile_grid_override', false );
+		},
 		'choices'           => [
 			'parts'              => Footer::get_footer_grid_parts(),
-			'duplicate'          => 'gridd_footer_grid',
+			'duplicate'          => 'footer_grid',
 			'disablePartButtons' => [ 'edit' ],
 		],
 		'transport'         => 'postMessage',
 		'partial_refresh'   => [
-			'gridd_footer_grid_mobile_template' => [
+			'footer_grid_mobile_template' => [
 				'selector'            => '.gridd-tp-footer',
 				'container_inclusive' => false,
 				'render_callback'     => function() {
@@ -71,3 +75,20 @@ Customizer::add_field(
 		],
 	]
 );
+
+/**
+ * WIP
+new \Kirki\Field\Custom(
+	[
+		'settings'        => 'gridd_copy_footer_grid_to_mobile',
+		'type'            => 'custom',
+		'label'           => '',
+		'section'         => 'footer_grid',
+		'default'         => '<div style="margin-bottom:1em;"><button class="button-gridd-copy-grid-setting button button-primary button-large" data-from="footer_grid" data-to="footer_mobile">' . esc_html__( 'Copy footer desktop grid to mobile', 'gridd-plus' ) . '</button></div>',
+		'priority'        => 110,
+		'active_callback' => function() {
+			return get_theme_mod( 'footer_mobile_grid_override', false );
+		},
+	]
+);
+*/

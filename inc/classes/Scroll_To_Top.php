@@ -31,7 +31,7 @@ class Scroll_To_Top {
 		}
 
 		// Add the HTML in the footer.
-		add_action( 'wp_footer', [ $this, 'the_html' ] );
+		add_action( 'wp_footer', [ $this, 'the_html' ], 999 );
 
 		// Add the CSS in the footer.
 		add_action( 'wp_footer', [ $this, 'the_css' ] );
@@ -47,24 +47,25 @@ class Scroll_To_Top {
 	public function the_html() {
 		?>
 		<div class="scrolltop-wrap" aria-hidden="true">
-			<a id="scrollToTop" href="#">
-				<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg">
-					<path id="scrolltop-bg" d="M0 0h48v48h-48z"></path>
-					<path id="scrolltop-arrow" d="M14.83 30.83l9.17-9.17 9.17 9.17 2.83-2.83-12-12-12 12z"></path>
-				</svg>
-			</a>
+			<a id="scrollToTop" href="#">⌵</a>
 		</div>
-		<?php if ( ! AMP::is_active() ) : ?>
-			<script>
-			document.getElementById( 'scrollToTop' ).onclick = function( e ) {
-				e.preventDefault();
-				window.scroll( {
-					top: 0,
-					behavior: 'smooth'
-				} );
-			}
-			</script>
-		<?php endif; ?>
+		<script>
+		window.addEventListener( 'scroll', function() {
+			let showScroll = ( window.scrollY > 1.5 * screen.height );
+
+			setTimeout( function() {
+				if ( ! showScroll ) {
+					document.body.classList.remove( 'gridd-scroll-to-top' );
+				} else {
+					document.body.classList.add( 'gridd-scroll-to-top' )
+				}
+			}, 50 );
+		} );
+		document.getElementById( 'scrollToTop' ).onclick = function( e ) {
+			e.preventDefault();
+			window.scroll( { top: 0, behavior: 'smooth' } );
+		}
+		</script>
 		<?php
 	}
 
@@ -80,9 +81,7 @@ class Scroll_To_Top {
 
 		$style = Style::get_instance( 'scroll-to-top' );
 		$style->add_file( GRIDD_PLUS_PATH . '/assets/css/totop.min.css' );
-		if ( 'large' === get_theme_mod( 'gridd_enable_totop', 'hidden' ) ) {
-			$style->add_string( '@media only screen and (max-width:' . esc_attr( $breakpoint ) . '){.gridd-scroll-totop{display:none;}}' );
-		}
+		$style->add_string( '@media only screen and (max-width:' . esc_attr( $breakpoint ) . '){.scrolltop-wrap{display:none;}}' );
 		$style->the_css( 'gridd-inline-css-totop' );
 	}
 }

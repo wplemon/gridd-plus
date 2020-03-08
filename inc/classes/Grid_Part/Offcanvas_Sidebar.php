@@ -36,7 +36,7 @@ class Offcanvas_Sidebar extends Grid_Part {
 	 */
 	protected $id = 'offcanvas-sidebar';
 
-    /**
+	/**
 	 * Hooks & extra operations.
 	 *
 	 * @access public
@@ -63,14 +63,14 @@ class Offcanvas_Sidebar extends Grid_Part {
 	 * @return void
 	 */
 	protected function set_part() {
-        $this->part = [
+		$this->part = [
 			'label'    => esc_html__( 'Offcanvas Sidebar', 'gridd-plus' ),
 			'color'    => [ '#74BEA7', '#000' ],
 			'priority' => 10,
 			'hidden'   => true,
 			'id'       => $this->id,
 		];
-    }
+	}
 
 	/**
 	 * Add action on the get_sidebar hook.
@@ -93,13 +93,13 @@ class Offcanvas_Sidebar extends Grid_Part {
 	 * @return void
 	 */
 	public function render( $part ) {
-        if ( 'offcanvas-sidebar' === $part ) {
-            if ( Rest::is_partial_deferred( $part ) ) {
-                echo '<div class="gridd-tp gridd-tp-' . esc_attr( $part ) . ' gridd-rest-api-placeholder"></div>';
-                return;
-            }
-            $this->the_partial( $part );
-        }
+		if ( 'offcanvas-sidebar' === $part ) {
+			if ( Rest::is_partial_deferred( $part ) ) {
+				echo '<div class="gridd-tp gridd-tp-' . esc_attr( $part ) . ' gridd-rest-api-placeholder"></div>';
+				return;
+			}
+			$this->the_partial( $part );
+		}
 	}
 
 	/**
@@ -111,8 +111,8 @@ class Offcanvas_Sidebar extends Grid_Part {
 	 * @return void
 	 */
 	public function the_partial( $part ) {
-        if ( 'offcanvas-sidebar' === $part ) {
-            include GRIDD_PLUS_PATH . '/inc/templates/offcanvas-sidebar.php';
+		if ( 'offcanvas-sidebar' === $part ) {
+			include GRIDD_PLUS_PATH . '/inc/templates/offcanvas-sidebar.php';
 		}
 	}
 
@@ -124,17 +124,17 @@ class Offcanvas_Sidebar extends Grid_Part {
 	 * @return void
 	 */
 	public function register_sidebars() {
-        register_sidebar(
-            [
-                'name'          => esc_html__( 'Offcanvas Sidebar', 'gridd-plus' ),
-                'id'            => 'offcanvas-sidebar',
-                'description'   => esc_html__( 'Add widgets here.', 'gridd-plus' ),
-                'before_widget' => '<section id="%1$s" class="widget %2$s">',
-                'after_widget'  => '</section>',
-                'before_title'  => '<h2 class="widget-title h3">',
-                'after_title'   => '</h2>',
-            ]
-        );
+		register_sidebar(
+			[
+				'name'          => esc_html__( 'Offcanvas Sidebar', 'gridd-plus' ),
+				'id'            => 'offcanvas-sidebar',
+				'description'   => esc_html__( 'Add widgets here.', 'gridd-plus' ),
+				'before_widget' => '<section id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</section>',
+				'before_title'  => '<h2 class="widget-title h3">',
+				'after_title'   => '</h2>',
+			]
+		);
 	}
 
 	/**
@@ -145,22 +145,22 @@ class Offcanvas_Sidebar extends Grid_Part {
 	 * @return void
 	 */
 	public function register_rest_api_partials() {
-        Rest::register_partial(
-            [
-                'id'    => 'offcanvas-sidebar',
-                'label' => esc_html__( 'Offcanvas Sidebar', 'gridd-plus' ),
-            ]
-        );
+		Rest::register_partial(
+			[
+				'id'    => 'offcanvas-sidebar',
+				'label' => esc_html__( 'Offcanvas Sidebar', 'gridd-plus' ),
+			]
+		);
 	}
 
 		/**
-	 * Change the position of the grid-part and put it right after the header.
-	 *
-	 * @access public
-	 * @since 2.0.0
-	 * @param array $parts An array of our ordered grid-parts.
-	 * @return array
-	 */
+		 * Change the position of the grid-part and put it right after the header.
+		 *
+		 * @access public
+		 * @since 2.0.0
+		 * @param array $parts An array of our ordered grid-parts.
+		 * @return array
+		 */
 	public function grid_parts_order( $parts ) {
 		$final_parts = [];
 		foreach ( $parts as $part ) {

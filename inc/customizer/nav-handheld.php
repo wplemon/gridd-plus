@@ -6,19 +6,26 @@
  * @since 1.0
  */
 
-use Gridd\Customizer;
+add_action(
+	'customize_register',
+	function( $wp_customize ) {
+		// $wp_customize->get_control( 'nav-handheld_parts' )->choices['widget-area'] = 'Widget Area';
+	},
+	9999
+);
 
-Customizer::add_field(
+/**
+ *
+new \Kirki\Field\Text(
 	[
-		'type'            => 'text',
-		'settings'        => 'gridd_grid_nav-handheld_widget_area_label',
+		'settings'        => 'nav-handheld_widget_area_label',
 		'label'           => esc_html__( 'Widget Area Button Label', 'gridd-plus' ),
 		'description'     => esc_html__( 'Please add a label for the widget area.', 'gridd-plus' ),
 		'section'         => 'gridd_mobile',
 		'default'         => esc_html__( 'Settings', 'gridd-plus' ),
 		'transport'       => 'postMessage',
 		'partial_refresh' => [
-			'gridd_grid_nav-handheld_widget_area_label_template' => [
+			'nav-handheld_widget_area_label_template' => [
 				'selector'            => '.gridd-tp-nav-handheld',
 				'container_inclusive' => true,
 				'render_callback'     => function() {
@@ -28,12 +35,12 @@ Customizer::add_field(
 		],
 		'active_callback' => [
 			[
-				'setting'  => 'gridd_grid_nav-handheld_enable',
+				'setting'  => 'nav-handheld_enable',
 				'operator' => '===',
 				'value'    => true,
 			],
 			[
-				'setting'  => 'gridd_grid_nav-handheld_parts',
+				'setting'  => 'nav-handheld_parts',
 				'operator' => 'contains',
 				'value'    => 'widget-area',
 			],
@@ -41,10 +48,9 @@ Customizer::add_field(
 	]
 );
 
-Customizer::add_field(
+new \Kirki\Field\Textarea(
 	[
-		'type'              => 'textarea',
-		'settings'          => 'gridd_grid_nav-handheld_widget_area_icon',
+		'settings'          => 'nav-handheld_widget_area_icon',
 		'label'             => esc_html__( 'Widget Area Button SVG Icon', 'gridd-plus' ),
 		'description'       => __( 'Paste SVG code for the icon you want to use. You can find a great collection of icons on the <a href="https://iconmonstr.com/" target="_blank" rel="noopener noreferrer nofollow">iconmonstr website</a> or add your custom icon.', 'gridd-plus' ),
 		'section'           => 'gridd_mobile',
@@ -64,15 +70,16 @@ Customizer::add_field(
 		],
 		'active_callback'   => [
 			[
-				'setting'  => 'gridd_grid_nav-handheld_parts',
+				'setting'  => 'nav-handheld_parts',
 				'operator' => 'contains',
 				'value'    => 'widget-area',
 			],
 			[
-				'setting'  => 'gridd_grid_nav-handheld_enable',
+				'setting'  => 'nav-handheld_enable',
 				'operator' => '===',
 				'value'    => true,
 			],
 		],
 	]
 );
+ */

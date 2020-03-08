@@ -7,7 +7,6 @@
 
 namespace Gridd_Plus\Grid_Part;
 
-use Gridd\Grid;
 use Gridd\Grid_Part;
 use Gridd\Theme;
 

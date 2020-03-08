@@ -7,9 +7,7 @@
 
 namespace Gridd_Plus\Grid_Part;
 
-use Gridd\Grid;
 use Gridd\Grid_Part;
-use Gridd\Style;
 
 /**
  * The Gridd\Grid_Part\Nested_Grid object.

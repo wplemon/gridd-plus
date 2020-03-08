@@ -49,7 +49,7 @@ class Grid {
 			if ( get_theme_mod( 'gridd_custom_mobile_grid', false ) ) {
 
 				// Add mobile grid parts.
-				if ( Grid_Parts::is_grid_part_active( $part['id'], 'gridd_grid_mobile' ) && ! in_array( $part['id'], $grid_parts, true ) ) {
+				if ( Grid_Parts::is_grid_part_active( $part['id'], 'mobile' ) && ! in_array( $part['id'], $grid_parts, true ) ) {
 					$grid_parts[] = $part['id'];
 				}
 			}
@@ -69,18 +69,20 @@ class Grid {
 		switch ( $args['context'] ) {
 			case 'main':
 				if ( get_theme_mod( 'gridd_custom_mobile_grid', false ) ) {
-					$args['small'] = \Gridd\Grid::get_options( 'gridd_grid_mobile' );
+					$args['small'] = \Gridd\Grid::get_options( 'mobile' );
 				}
 				break;
 
 			case 'header':
-				if ( get_theme_mod( 'gridd_grid_header_mobile_override', true ) ) {
-					$args['small'] = \Gridd\Grid::get_options( 'gridd_grid_header_mobile' );
+				if ( get_theme_mod( 'header_mobile_override', true ) ) {
+					$args['small'] = \Gridd\Grid::get_options( 'header_mobile' );
 				}
 				break;
 
 			case 'footer':
-				$args['small'] = \Gridd\Grid::get_options( 'gridd_grid_footer_mobile' );
+				if ( get_theme_mod( 'footer_mobile_grid_override', true ) ) {
+					$args['small'] = \Gridd\Grid::get_options( 'footer_mobile' );
+				}
 				break;
 
 		}
@@ -99,7 +101,7 @@ class Grid {
 	 */
 	public function options_defaults( $defaults, $theme_mod ) {
 		switch ( $theme_mod ) {
-			case 'gridd_grid_mobile':
+			case 'mobile':
 				return [
 					'rows'         => 5,
 					'columns'      => 1,
@@ -126,9 +128,9 @@ class Grid {
 					],
 				];
 
-			case 'gridd_grid_header_mobile':
+			case 'header_mobile':
 				return get_theme_mod(
-					'gridd_header_grid',
+					'header_grid',
 					[
 						'rows'         => 1,
 						'columns'      => 1,
@@ -144,9 +146,9 @@ class Grid {
 					]
 				);
 
-			case 'gridd_grid_footer_mobile':
+			case 'footer_mobile':
 				return get_theme_mod(
-					'gridd_footer_grid',
+					'footer_grid',
 					[
 						'rows'         => 2,
 						'columns'      => 2,

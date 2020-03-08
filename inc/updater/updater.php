@@ -40,13 +40,13 @@ add_action(
 		$edd_updater = new EDD_SL_Plugin_Updater(
 			WPLEMON_STORE_URL,
 			GRIDD_PLUS_PLUGIN_FILE,
-			array(
+			[
 				'version' => GRIDD_PLUS_VERSION,
 				'license' => trim( get_option( GRIDD_PLUS_PLUGIN_DB_PREFIX . '_key' ) ),
 				'item_id' => 3438,
 				'author'  => 'Ari Stathopoulos',
 				'beta'    => false,
-			)
+			]
 		);
 	},
 	0
@@ -183,21 +183,21 @@ add_action(
 			$license = trim( get_option( GRIDD_PLUS_PLUGIN_DB_PREFIX . '_key' ) );
 
 			// Data to send in our API request.
-			$api_params = array(
+			$api_params = [
 				'edd_action' => 'activate_license',
 				'license'    => $license,
 				'item_name'  => urlencode( GRIDD_PLUS_ITEM_NAME ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions
 				'url'        => home_url(),
-			);
+			];
 
 			// Call the custom API.
 			$response = wp_remote_post(
 				WPLEMON_STORE_URL,
-				array(
+				[
 					'timeout'   => 15,
 					'sslverify' => false,
 					'body'      => $api_params,
-				)
+				]
 			);
 
 			// Make sure the response came back okay.
@@ -257,10 +257,10 @@ add_action(
 			if ( ! empty( $message ) ) {
 				$base_url = admin_url( 'plugins.php?page=' . GRIDD_PLUS_PLUGIN_LICENSE_PAGE );
 				$redirect = add_query_arg(
-					array(
+					[
 						'sl_activation' => 'false',
 						'message'       => urlencode( $message ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions
-					),
+					],
 					$base_url
 				);
 
@@ -291,21 +291,21 @@ add_action(
 			$license = trim( get_option( GRIDD_PLUS_PLUGIN_DB_PREFIX . '_key' ) );
 
 			// Data to send in our API request.
-			$api_params = array(
+			$api_params = [
 				'edd_action' => 'deactivate_license',
 				'license'    => $license,
 				'item_name'  => urlencode( GRIDD_PLUS_ITEM_NAME ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions
 				'url'        => home_url(),
-			);
+			];
 
 			// Call the custom API.
 			$response = wp_remote_post(
 				WPLEMON_STORE_URL,
-				array(
+				[
 					'timeout'   => 15,
 					'sslverify' => false,
 					'body'      => $api_params,
-				)
+				]
 			);
 
 			// Make sure the response came back okay.
@@ -318,10 +318,10 @@ add_action(
 
 				$base_url = admin_url( 'plugins.php?page=' . GRIDD_PLUS_PLUGIN_LICENSE_PAGE );
 				$redirect = add_query_arg(
-					array(
+					[
 						'sl_activation' => 'false',
 						'message'       => urlencode( $message ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions
-					),
+					],
 					$base_url
 				);
 

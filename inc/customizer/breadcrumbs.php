@@ -5,37 +5,35 @@
  * @package Gridd
  */
 
-use Gridd\Customizer;
 use Gridd\Customizer\Sanitize;
 
 $sanitization = new Sanitize();
 
-Customizer::add_field(
+new \Kirki\Field\Slider(
 	[
-		'type'        => 'slider',
-		'settings'    => 'gridd_grid_breadcrumbs_font_size',
-		'label'       => esc_html__( 'Font Size', 'gridd-plus' ),
-		'description' => Customizer::get_control_description(
+		'settings'        => 'breadcrumbs_font_size',
+		'label'           => esc_html__( 'Breadcrumbs Font Size', 'gridd-plus' ),
+		'description'     => esc_html__( 'Controls the font-size for your breadcrumbs, relative to the body font-size.', 'gridd-plus' ),
+		'section'         => 'breadcrumbs',
+		'default'         => 1,
+		'transport'       => 'postMessage',
+		'priority'        => 100,
+		'output'          => [
 			[
-				'short'   => '',
-				'details' => esc_html__( 'Controls the font-size for your breadcrumbs. This value is relative to the body font-size, so a value of 1em will have the same size as your content.', 'gridd-plus' ),
-			]
-		),
-		'section'     => 'breadcrumbs',
-		'default'     => 1,
-		'transport'   => 'postMessage',
-		'output'      => [
-			[
-				'element'  => ':root',
-				'property' => '--brd-fs',
+				'element'       => '.gridd-tp-breadcrumbs',
+				'property'      => 'font-size',
+				'value_pattern' => '$em',
 			],
 		],
-		'choices'     => [
+		'choices'         => [
 			'min'    => .5,
 			'max'    => 2,
 			'step'   => .01,
 			'suffix' => 'em',
 		],
+		'active_callback' => function() {
+			return \Gridd\Customizer::is_section_active_part( 'breadcrumbs' ) && get_theme_mod( 'breadcrumbs_custom_options', false );
+		},
 	]
 );
 

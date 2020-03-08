@@ -1,85 +1,40 @@
 // CSS for this implementation is a slightly tweaked version of https://codepen.io/rolandtoth/pen/eMamVK/
 
-@mixin setScrolltopColors($bgColor: #333, $arrowColor: white, $bgColorHover: $bgColor, $arrowColorHover: $arrowColor) {
-	#scrolltop-bg {
-		fill: $bgColor;
-	}
-
-	#scrolltop-arrow {
-		fill: $arrowColor;
-	}
-
-	a:hover {
-		#scrolltop-bg {
-			fill: $bgColorHover;
-		}
-
-		#scrolltop-arrow {
-			fill: $arrowColorHover;
-		}
-	}
-}
-
 .scrolltop-wrap {
-	$size: 3em;
-	$offsetBottom: 2em;
-	$offsetHorizontal: 2em;
-	$scrollToRevealDistance: 35vh; // scroll offset to reveal scroll-to-top link
 	box-sizing: border-box;
-	position: absolute;
-	top: $scrollToRevealDistance;
-	right: $offsetHorizontal;
-	bottom: 0;
-	pointer-events: none;
-	backface-visibility: hidden;
-	@include setScrolltopColors(var(--lc), white, var(--lc));
+	position: fixed;
+	bottom: -2em;
+	right: 2em;
+	transition: all 200ms;
 
-	// prevent extra page height if content is smaller than viewport
-	// Firefox only
-	@supports (-moz-appearance: meterbar) {
-		clip: rect(0, $size, auto, 0);
+	.gridd-scroll-to-top & {
+		bottom: 0;
+	}
+
+	body.rtl & {
+		right: auto;
+		left: 2em;
 	}
 
 	a {
-		$offset: - ($size + $offsetBottom); // pull up + add a small bottom space
-		position: fixed; // fallback
-		position: sticky;
-		top: $offset;
-		width: $size;
-		height: $size;
-		margin-bottom: $offset;
-		transform: translateY(100vh); // push to bottom from top (when stuck)
-		backface-visibility: hidden;
-		display: inline-block;
+		display: flex;
+		justify-content: center;
+		width: 2em;
+		height: 2em;
+		line-height: 1.2;
+		background: var(--lc);
+		color: var(--bg);
 		text-decoration: none;
-		user-select: none;
-		pointer-events: all;
-		outline: none;
-		overflow: hidden;
+		transform: rotate(180deg);
+		border-radius: 0 0 4px 4px;
 
-		svg {
-			display: block;
-			border-radius: 50%;
-			width: 100%;
-			height: 100%;
-
-			path {
-				transition: all 0.1s;
-			}
-		}
-
-		#scrolltop-arrow {
-			transform: scale(0.66);
-			transform-origin: center;
+		&:hover {
+			background: var(--cl);
+			text-decoration: none;
 		}
 	}
 
 	@media print {
 		display: none !important;
 	}
-}
-
-.q-scroll-totop {
-	bottom: 80;
-	padding: .5em;
 }

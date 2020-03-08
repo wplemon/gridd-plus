@@ -12,11 +12,10 @@ use Gridd\customizer\Sanitize;
 
 $sanitization = new Sanitize();
 
-Customizer::add_field(
+new \Kirki\Field\Checkbox(
 	[
-		'settings' => 'gridd_grid_header_mobile_override',
-		'section'  => 'grid_part_details_header',
-		'type'     => 'checkbox',
+		'settings' => 'header_mobile_override',
+		'section'  => 'header_grid',
 		'default'  => true,
 		'label'    => esc_html__( 'Enable Separate Grid for Mobile', 'gridd-plus' ),
 	]
@@ -24,8 +23,8 @@ Customizer::add_field(
 
 Customizer::add_field(
 	[
-		'settings'          => 'gridd_grid_header_mobile',
-		'section'           => 'grid_part_details_header',
+		'settings'          => 'header_mobile',
+		'section'           => 'header_grid',
 		'type'              => 'gridd_grid',
 		'grid-part'         => 'header',
 		'label'             => esc_html__( 'Header Mobile Grid Settings', 'gridd-plus' ),
@@ -34,15 +33,15 @@ Customizer::add_field(
 			__( 'Edit settings for the header grid. For more information and documentation on how the grid works, please read <a %s>this article</a>.', 'gridd-plus' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			'href="https://wplemon.com/documentation/gridd/the-grid-control/" target="_blank"'
 		),
-		'default'           => get_theme_mod( 'gridd_header_grid', Header::get_grid_defaults() ),
+		'default'           => get_theme_mod( 'header_grid', Header::get_grid_defaults() ),
 		'sanitize_callback' => [ $sanitization, 'grid' ],
 		'choices'           => [
 			'parts'              => Header::get_header_grid_parts(),
-			'duplicate'          => 'gridd_header_grid',
+			'duplicate'          => 'header_grid',
 			'disablePartButtons' => [ 'edit' ],
 		],
 		'active_callback'   => function() {
-			return get_theme_mod( 'gridd_grid_header_mobile_override', true );
+			return get_theme_mod( 'header_mobile_override', true );
 		},
 		'transport'         => 'postMessage',
 		'priority'          => 15,
