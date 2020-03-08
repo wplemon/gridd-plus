@@ -8,8 +8,6 @@
 
 namespace Gridd_Plus;
 
-use Gridd\Theme;
-
 /**
  * The Gridd_Plus object.
  * Takes care of initializing the plugin and doing what must be done.
