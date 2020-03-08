@@ -36,7 +36,6 @@ class Customizer {
 	 */
 	public function include_files() {
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/customizer.php';
-		require_once GRIDD_PLUS_PATH . '/inc/customizer/breadcrumbs.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/features.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/footer.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/grid.php';
