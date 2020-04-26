@@ -116,12 +116,11 @@ new Scripts();
  */
 new Post();
 
+require_once GRIDD_PLUS_PATH . '/vendor/autoload.php';
+
 /**
  * Include the updater.
  *
  * @since 1.0
  */
 require_once GRIDD_PLUS_PATH . '/inc/updater/updater.php';
-
-require_once GRIDD_PLUS_PATH . '/inc/customizer/control-wcag-linkcolor/bootstrap.php';
-require_once GRIDD_PLUS_PATH . '/inc/customizer/control-wcag-textcolor/bootstrap.php';
