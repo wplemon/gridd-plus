@@ -82,13 +82,6 @@ new Color_Deficiencies_Simulator();
 new Scroll_To_Top();
 
 /**
- * Add Grid mods.
- *
- * @since 1.0
- */
-new Grid();
-
-/**
  * Add styles.
  *
  * @since 1.0

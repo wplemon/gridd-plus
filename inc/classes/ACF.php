@@ -25,7 +25,6 @@ class ACF {
 		if ( ! class_exists( 'acf_pro' ) ) {
 			$this->include_acf();
 		}
-		add_action( 'after_setup_theme', [ $this, 'include_acf_fields' ] );
 	}
 
 	/**
@@ -55,16 +54,5 @@ class ACF {
 
 		// Include the plugin file.
 		include_once GRIDD_PLUS_PATH . '/inc/acf/plugin/acf.php';
-	}
-
-	/**
-	 * Includes the ACD fields in after_setup_theme.
-	 *
-	 * @access public
-	 * @since 1.0.2
-	 * @return void
-	 */
-	public function include_acf_fields() {
-		require_once GRIDD_PLUS_PATH . '/inc/acf/fields.php';
 	}
 }

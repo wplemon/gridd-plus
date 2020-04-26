@@ -36,10 +36,6 @@ class Customizer {
 	 */
 	public function include_files() {
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/customizer.php';
-		require_once GRIDD_PLUS_PATH . '/inc/customizer/footer.php';
-		require_once GRIDD_PLUS_PATH . '/inc/customizer/grid.php';
-		require_once GRIDD_PLUS_PATH . '/inc/customizer/header.php';
-		require_once GRIDD_PLUS_PATH . '/inc/customizer/nav-handheld.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/navigation.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/nested-grid.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/offcanvas-sidebar.php';
@@ -58,8 +54,6 @@ class Customizer {
 	 */
 	public function customize_register( $wp_customize ) {
 
-		$wp_customize->get_control( 'header_grid' )->choices['duplicate']  = 'header_mobile';
-		$wp_customize->get_control( 'footer__grid' )->choices['duplicate'] = 'footer__mobile';
 		if ( class_exists( 'WooCommerce' ) ) {
 			$wp_customize->get_control( 'nav-handheld_parts' )->choices['woo-cart'] = esc_html__( 'Cart', 'gridd-plus' );
 		}
