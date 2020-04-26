@@ -75,20 +75,3 @@ Customizer::add_field(
 		],
 	]
 );
-
-/**
- * WIP
-new \Kirki\Field\Custom(
-	[
-		'settings'        => 'gridd_copy_footer_grid_to_mobile',
-		'type'            => 'custom',
-		'label'           => '',
-		'section'         => 'footer_grid',
-		'default'         => '<div style="margin-bottom:1em;"><button class="button-gridd-copy-grid-setting button button-primary button-large" data-from="footer_grid" data-to="footer_mobile">' . esc_html__( 'Copy footer desktop grid to mobile', 'gridd-plus' ) . '</button></div>',
-		'priority'        => 110,
-		'active_callback' => function() {
-			return get_theme_mod( 'footer_mobile_grid_override', false );
-		},
-	]
-);
-*/
