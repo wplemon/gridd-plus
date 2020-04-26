@@ -62,6 +62,6 @@ add_action( 'gridd_setup', 'gridd_plus_bootstrap' );
  * @return int
  */
 function gridd_plus_sidebars_number() {
-	return (int) get_theme_mod( 'widget_areas_number', 3 );
+	return (int) get_theme_mod( 'widget_areas_number', 10 );
 }
 add_filter( 'gridd_get_number_of_widget_areas', 'gridd_plus_sidebars_number' );
