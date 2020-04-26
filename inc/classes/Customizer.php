@@ -36,7 +36,6 @@ class Customizer {
 	 */
 	public function include_files() {
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/customizer.php';
-		require_once GRIDD_PLUS_PATH . '/inc/customizer/features.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/footer.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/grid.php';
 		require_once GRIDD_PLUS_PATH . '/inc/customizer/header.php';
@@ -64,7 +63,6 @@ class Customizer {
 		if ( class_exists( 'WooCommerce' ) ) {
 			$wp_customize->get_control( 'nav-handheld_parts' )->choices['woo-cart'] = esc_html__( 'Cart', 'gridd-plus' );
 		}
-		$wp_customize->get_control( 'gridd_featured_image_mode_singular' )->choices['fixed'] = esc_html__( 'Fixed', 'gridd-plus' );
 	}
 
 	/**

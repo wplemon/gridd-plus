@@ -54,7 +54,6 @@ class Plugin {
 
 		// Gridd theme filters and actions.
 		add_action( 'gridd_nav_handheld_part_template', [ $this, 'handheld_nav_widget_parts' ] );
-		add_filter( 'gridd_featured_image_use_background', [ $this, 'featured_image_use_background' ] );
 		add_filter( 'gridd_render_grid_part', [ $this, 'gridd_render_grid_part' ], 10, 2 );
 	}
 
@@ -109,20 +108,6 @@ class Plugin {
 				}
 				break;
 		}
-	}
-
-	/**
-	 * Figure out if we want to use a background-image for featured images or not.
-	 *
-	 * @access public
-	 * @since 1.0
-	 * @return bool
-	 */
-	public function featured_image_use_background() {
-		if ( 'fixed' === get_theme_mod( 'gridd_featured_image_mode_singular', 'alignwide' ) ) {
-			return true;
-		}
-		return false;
 	}
 
 	/**
