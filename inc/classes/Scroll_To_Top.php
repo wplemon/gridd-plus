@@ -51,7 +51,7 @@ class Scroll_To_Top {
 		</div>
 		<script>
 		window.addEventListener( 'scroll', function() {
-			let showScroll = ( window.scrollY > 1.5 * screen.height );
+			let showScroll = ( window.scrollY > screen.height );
 
 			setTimeout( function() {
 				if ( ! showScroll ) {
