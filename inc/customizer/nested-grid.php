@@ -91,24 +91,6 @@ function gridd_add_nested_grid_options( $id ) {
 
 	Customizer::add_field(
 		[
-			'type'        => 'dimension',
-			'settings'    => "gridd_nested_grid_{$id}_padding",
-			'label'       => esc_attr__( 'Grid Container Padding', 'gridd-plus' ),
-			'description' => '',
-			'section'     => "nested-grid-$id",
-			'default'     => '0',
-			'transport'   => 'auto',
-			'output'      => [
-				[
-					'element'  => ".gridd-tp-nested-grid-$id",
-					'property' => '--pd',
-				],
-			],
-		]
-	);
-
-	Customizer::add_field(
-		[
 			'type'      => 'dimension',
 			'settings'  => "gridd_nested_grid_{$id}_gap",
 			'label'     => esc_attr__( 'Grid Container Gap', 'gridd-plus' ),

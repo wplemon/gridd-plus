@@ -85,28 +85,6 @@ new \Kirki\Field\RadioButtonset(
 	]
 );
 
-Customizer::add_field(
-	[
-		'type'            => 'dimension',
-		'settings'        => 'gridd_pluss_offcanvas_sidebar_padding',
-		'label'           => esc_html__( 'Padding', 'gridd-plus' ),
-		'description'     => __( 'Inner padding for this grid-part. Use any valid CSS value. For details on how padding works, please refer to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding" target="_blank" rel="nofollow">this article</a>.', 'gridd-plus' ),
-		'section'         => 'gridd_plus_offcanvas_sidebar',
-		'default'         => '1em',
-		'transport'       => 'auto',
-		'output'          => [
-			[
-				'element'  => '#offcanvas-wrapper',
-				'property' => '--pd',
-			],
-		],
-		'active_callback' => function() {
-			return is_active_sidebar( 'offcanvas-sidebar' );
-		},
-		'priority'        => 60,
-	]
-);
-
 new \WPLemon\Field\WCAGTextColor(
 	[
 		'label'             => esc_html__( 'Text Color', 'gridd-plus' ),
