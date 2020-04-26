@@ -22,7 +22,7 @@ class Customizer {
 	public function __construct() {
 		add_action( 'after_setup_theme', [ $this, 'include_files' ] );
 
-		add_action( 'customize_register', [ $this, 'customize_register' ] );
+		add_action( 'customize_register', [ $this, 'customize_register' ], 999999999 );
 
 		add_action( 'customize_controls_print_styles', [ $this, 'customize_controls_print_styles' ] );
 	}
