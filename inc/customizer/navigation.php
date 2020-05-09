@@ -61,33 +61,6 @@ function gridd_plus_nav_customizer_options( $id ) {
 		]
 	);
 
-	new \Kirki\Field\Slider(
-		[
-			'settings'        => "nav_{$id}_items_padding",
-			'label'           => esc_html__( 'Items Padding', 'gridd-plus' ),
-			'description'     => esc_html__( 'The inner padding for menu items. This setting affects the spacing between your menu items.', 'gridd-plus' ),
-			'section'         => "nav_$id",
-			'default'         => 1,
-			'transport'       => 'postMessage',
-			'output'          => [
-				[
-					'element'       => ".gridd-tp-nav_$id",
-					'property'      => '--ipd',
-					'value_pattern' => '$em',
-				],
-			],
-			'choices'         => [
-				'min'    => 0.2,
-				'max'    => 3,
-				'step'   => 0.01,
-				'suffix' => 'em',
-			],
-			'active_callback' => function() use ( $id ) {
-				return get_theme_mod( "nav_{$id}_custom_options", false );
-			},
-		]
-	);
-
 	Customizer::add_field(
 		[
 			'type'            => 'slider',
