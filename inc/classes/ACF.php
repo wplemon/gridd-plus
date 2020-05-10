@@ -40,7 +40,7 @@ class ACF {
 		add_filter(
 			'acf/settings/path',
 			function() {
-				return GRIDD_PLUS_PATH . '/inc/acf/plugin/';
+				return GRIDD_PLUS_PATH . '/inc/acf/';
 			}
 		);
 
@@ -48,11 +48,11 @@ class ACF {
 		add_filter(
 			'acf/settings/dir',
 			function() {
-				return GRIDD_PLUS_URL . '/inc/acf/plugin/';
+				return GRIDD_PLUS_URL . '/inc/acf/';
 			}
 		);
 
 		// Include the plugin file.
-		include_once GRIDD_PLUS_PATH . '/inc/acf/plugin/acf.php';
+		include_once GRIDD_PLUS_PATH . '/inc/acf/acf.php';
 	}
 }
