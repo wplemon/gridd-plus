@@ -1,3 +1,14 @@
+## v2.0.0
+2020-05-24
+
+* FIX: Nested Grid styles.
+* FIX: Refactored scroll-to-top link & styles.
+* FIX: Typography scales now using a slider.
+* UPDATED: ACF-Pro v5.8.11.
+* REMOVED: Custom grid metabox in posts & pages.
+* REMOVED: Separate mobile grids.
+* REMOVED: Grid parts padding options.
+
 ## v1.0.7
 2019-09-04
 
