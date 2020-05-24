@@ -4,7 +4,7 @@
  * Plugin URI:  https://wplemon.com
  * Author:      Ari Stathopoulos
  * Author URI:  http://aristath.github.io
- * Version:     2.0.0
+ * Version:     3.0.0
  * Description: Premium addon plugin for the Gridd theme.
  * Text Domain: gridd-plus
  *
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Define the URL.
 if ( ! defined( 'GRIDD_PLUS_VERSION' ) ) {
-	define( 'GRIDD_PLUS_VERSION', '2.0.0' );
+	define( 'GRIDD_PLUS_VERSION', '3.0.0' );
 }
 
 // Define the path.
