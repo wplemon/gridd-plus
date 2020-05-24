@@ -25,7 +25,7 @@ function gridd_add_nested_grid_options( $id ) {
 			/* translators: Number of a nested-grid. */
 			'title'           => sprintf( esc_html__( 'Nested Grid %d', 'gridd-plus' ), $id ),
 			'description'     => '<a href="https://wplemon.com/documentation/gridd/grid-parts/nested-grid/" target="_blank" rel="noopener noreferrer nofollow">' . esc_html__( 'Learn more about these settings', 'gridd-plus' ),
-			'section'         => 'theme_options',
+			'panel'           => 'theme_options',
 			'type'            => 'kirki-expanded',
 			'active_callback' => function() use ( $id ) {
 				return \Gridd\Customizer::is_section_active_part( "nested-grid-$id" );
