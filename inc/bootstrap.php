@@ -8,6 +8,11 @@
 
 namespace Gridd_Plus;
 
+// Make sure we have everything we need.
+if ( ! class_exists( '\Kirki\Field\ReactColor' ) ) {
+	return;
+}
+
 /**
  * The Gridd-Plus Autoloader.
  *
@@ -54,7 +59,8 @@ Plugin::get_instance();
 new Grid_Part\Nested_Grid();
 new Grid_Part\Layer_Slider();
 new Grid_Part\Slider_Revolution();
-new Grid_Part\Offcanvas_Sidebar();
+new \Gridd_Plus\Offcanvas_Sidebar();
+new \Gridd_Plus\Breadcrumbs();
 
 /**
  * Add the customizer modifications.
@@ -74,13 +80,6 @@ new Color_Deficiencies_Simulator();
  * Init scroll-to-top feature.
  */
 new Scroll_To_Top();
-
-/**
- * Add Grid mods.
- *
- * @since 1.0
- */
-new Grid();
 
 /**
  * Add styles.
@@ -110,10 +109,11 @@ new Scripts();
  */
 new Post();
 
+require_once GRIDD_PLUS_PATH . '/vendor/autoload.php';
+
 /**
  * Include the updater.
  *
  * @since 1.0
  */
 require_once GRIDD_PLUS_PATH . '/inc/updater/updater.php';
-

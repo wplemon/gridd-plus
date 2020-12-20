@@ -6,9 +6,13 @@
     "license": "GPLv2 or later",
     "require": {
         "php": ">=7",
-        "composer/installers": "~1.0"
+        "wplemon/control-wcag-textcolor": "dev-master",
+        "wplemon/control-wcag-linkcolor": "dev-master",
+        "kirki-framework/control-base": "dev-master",
+        "kirki-framework/field": "dev-master"
     },
     "require-dev": {
+        "composer/installers": "~1.0",
         "phpunit/phpunit": "*",
         "dealerdirect/phpcodesniffer-composer-installer": "*",
         "wp-coding-standards/wpcs": "*",

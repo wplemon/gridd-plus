@@ -26,10 +26,10 @@ function gridd_plus_sidebar_customizer_options( $id ) {
 	Customizer::add_field(
 		[
 			'type'        => 'slider',
-			'settings'    => "gridd_grid_sidebar_{$id}_font_size",
+			'settings'    => "sidebar_{$id}_font_size",
 			'label'       => esc_attr__( 'Font Size', 'gridd-plus' ),
 			'description' => '',
-			'section'     => "gridd_grid_part_details_sidebar_$id",
+			'section'     => "sidebar_$id",
 			'priority'    => 47,
 			'default'     => 1,
 			'choices'     => [
@@ -51,10 +51,10 @@ function gridd_plus_sidebar_customizer_options( $id ) {
 	Customizer::add_field(
 		[
 			'type'        => 'text',
-			'settings'    => "gridd_grid_sidebar_{$id}_visibility_post_id",
+			'settings'    => "sidebar_{$id}_visibility_post_id",
 			'label'       => esc_attr__( 'Visibility: Post-IDs', 'gridd-plus' ),
 			'description' => esc_html__( 'If you only want to show this grid-part in a specific page, enter its post-ID here. If you want to add multiple posts separate them with a comma.', 'gridd-plus' ),
-			'section'     => "gridd_grid_part_details_sidebar_$id",
+			'section'     => "sidebar_$id",
 			'priority'    => 300,
 			'default'     => '',
 		]
@@ -63,10 +63,10 @@ function gridd_plus_sidebar_customizer_options( $id ) {
 	Customizer::add_field(
 		[
 			'type'        => 'text',
-			'settings'    => "gridd_grid_sidebar_{$id}_visibility_term_id",
-			'label'       => esc_attr__( 'Visibility: Post-IDs', 'gridd-plus' ),
+			'settings'    => "sidebar_{$id}_visibility_term_id",
+			'label'       => esc_attr__( 'Visibility: Term-IDs', 'gridd-plus' ),
 			'description' => esc_html__( 'If you only want to show this grid-part in a specific category, tag etc, enter the term-ID here. If you want to add multiple terms separate them with a comma.', 'gridd-plus' ),
-			'section'     => "gridd_grid_part_details_sidebar_$id",
+			'section'     => "sidebar_$id",
 			'priority'    => 301,
 			'default'     => '',
 		]

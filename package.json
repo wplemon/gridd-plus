@@ -34,5 +34,9 @@
     "grunt-wp-i18n": "*",
     "postcss-clean": "*",
     "postcss-cssnext": "*"
+  },
+  "scripts": {
+    "cloneACF": "rm -rf inc/acf && git clone git@github.com:wplemon/acf-pro.git inc/acf",
+    "build": "composer install --no-dev && npm run cloneACF && grunt"
   }
 }

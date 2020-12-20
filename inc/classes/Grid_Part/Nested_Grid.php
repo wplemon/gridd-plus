@@ -7,9 +7,7 @@
 
 namespace Gridd_Plus\Grid_Part;
 
-use Gridd\Grid;
 use Gridd\Grid_Part;
-use Gridd\Style;
 
 /**
  * The Gridd\Grid_Part\Nested_Grid object.
@@ -81,11 +79,65 @@ class Nested_Grid extends Grid_Part {
 	public function render( $part ) {
 		if ( 0 === strpos( $part, 'nested-grid-' ) && is_numeric( str_replace( 'nested-grid-', '', $part ) ) ) {
 			$id = (int) str_replace( 'nested-grid-', '', $part );
-			/**
-			 * We use include( get_theme_file_path() ) here
-			 * because we need to pass the $sidebar_id var to the template.
-			 */
-			include GRIDD_PLUS_PATH . '/inc/templates/nested-grid.php';
+
+			$settings = \Gridd\Grid::get_options( "gridd_nested_grid_$id" );
+			$classes  = [
+				'gridd-tp',
+				"gridd-tp-nested-grid-$id",
+			];
+			if ( get_theme_mod( "gridd_nested_grid_{$id}_sticky", false ) ) {
+				$classes[] = 'gridd-sticky';
+			}
+
+			$style = \Gridd\Style::get_instance( "grid-part/nested-grid-$id" );
+			$style->add_string(
+				\Gridd\Grid::get_styles_responsive(
+					[
+						'context'    => "nested-grid-$id",
+						'large'      => $settings,
+						'small'      => false,
+						'breakpoint' => get_theme_mod( 'gridd_mobile_breakpoint', '800px' ),
+						'selector'   => '.gridd-tp-nested-grid-1 > .inner',
+						'prefix'     => true,
+					]
+				)
+			);
+			$style->add_file( GRIDD_PLUS_PATH . '/assets/css/nested-grid-default.min.css' );
+
+			// Add styles for large screens.
+			$style->add_string( '@media only screen and (min-width:' . get_theme_mod( 'gridd_mobile_breakpoint', '800px' ) . '){' );
+			$style->add_file( GRIDD_PLUS_PATH . '/assets/css/nested-grid-large.min.css' );
+			$style->add_string( '}' );
+
+			// Generate grid styles for parts.
+			$style->add_string( \Gridd\Grid::get_styles( $settings, "gridd-tp-nested-grid-$id > .inner", true ) );
+			$style->replace( 'ID', $id );
+			$style->add_vars(
+				[
+					"gridd-nested-grid-$id-background" => get_theme_mod( "gridd_nested_grid_{$id}_background_color", '#ffffff' ),
+					"gridd-nested-grid-$id-padding"    => get_theme_mod( "gridd_nested_grid_{$id}_padding", 0 ),
+					"gridd-nested-grid-$id-box-shadow" => get_theme_mod( "gridd_nested_grid_{$id}_box_shadow", 'none' ),
+					"gridd-nested-grid-$id-max-width"  => get_theme_mod( "gridd_nested_grid_{$id}_max_width", '' ),
+					"gridd-nested-grid-$id-grid-gap"   => get_theme_mod( "gridd_nested_grid_{$id}_gap", 0 ),
+				]
+			);
+			?>
+			<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
+				<?php
+				/**
+				 * Print styles.
+				 */
+				$style->the_css( 'gridd-inline-css-nested-grid-' . $id );
+				?>
+				<div class="inner">
+					<?php if ( isset( $settings['areas'] ) ) : ?>
+						<?php foreach ( array_keys( $settings['areas'] ) as $part ) : ?>
+							<?php do_action( 'gridd_the_grid_part', $part ); ?>
+						<?php endforeach; ?>
+					<?php endif; ?>
+				</div>
+			</div>
+			<?php
 		}
 	}
 

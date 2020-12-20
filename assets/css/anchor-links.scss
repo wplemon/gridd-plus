@@ -1,6 +1,9 @@
 .anchor-injected {
 	opacity: 0;
 	transition: all 250ms;
+	text-decoration: none !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
 
 	&:before {
 		content: "🔗";

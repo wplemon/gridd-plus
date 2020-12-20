@@ -8,8 +8,6 @@
 
 namespace Gridd_Plus;
 
-use Gridd\Theme;
-
 /**
  * The Gridd_Plus object.
  * Takes care of initializing the plugin and doing what must be done.
@@ -97,7 +95,7 @@ class WooCommerce {
 		$is_cart     = ( function_exists( 'is_cart' ) && is_cart() );
 		$is_checkout = ( ( function_exists( 'is_checkout' ) && is_checkout() ) || ( function_exists( 'is_checkout_pay_page' ) && is_checkout_pay_page() ) );
 		$menu_id     = absint( str_replace( 'menu-', '', $args->theme_location ) );
-		$show_in_nav = get_theme_mod( "gridd_grid_nav_{$menu_id}_woo_cart", 1 === $menu_id );
+		$show_in_nav = get_theme_mod( "nav_{$menu_id}_woo_cart", 1 === $menu_id );
 
 		if ( ! $is_cart && ! $is_checkout && $show_in_nav ) {
 			ob_start();

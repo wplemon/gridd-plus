@@ -4,7 +4,7 @@
  * Plugin URI:  https://wplemon.com
  * Author:      Ari Stathopoulos
  * Author URI:  http://aristath.github.io
- * Version:     1.0.7
+ * Version:     3.0.0
  * Description: Premium addon plugin for the Gridd theme.
  * Text Domain: gridd-plus
  *
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Define the URL.
 if ( ! defined( 'GRIDD_PLUS_VERSION' ) ) {
-	define( 'GRIDD_PLUS_VERSION', '1.0.7' );
+	define( 'GRIDD_PLUS_VERSION', '3.0.0' );
 }
 
 // Define the path.
@@ -52,3 +52,16 @@ function gridd_plus_bootstrap() {
 	require_once GRIDD_PLUS_PATH . '/inc/bootstrap.php';
 }
 add_action( 'gridd_setup', 'gridd_plus_bootstrap' );
+
+/**
+ * Filter sidebars number.
+ *
+ * This needs to be in the main plugin file because of filter priorities.
+ *
+ * @since 2.0.0
+ * @return int
+ */
+function gridd_plus_sidebars_number() {
+	return (int) get_theme_mod( 'widget_areas_number', 10 );
+}
+add_filter( 'gridd_get_number_of_widget_areas', 'gridd_plus_sidebars_number' );

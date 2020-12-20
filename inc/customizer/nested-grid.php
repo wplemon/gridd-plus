@@ -19,17 +19,17 @@ use Gridd\customizer\Sanitize;
 function gridd_add_nested_grid_options( $id ) {
 
 	$sanitization = new Sanitize();
-	Customizer::add_section(
-		"gridd_grid_part_details_nested-grid-{$id}",
+	new \Kirki\Section(
+		"nested-grid-{$id}",
 		[
-			'title'       => sprintf(
-				/* translators: The grid-part label. */
-				esc_attr__( '%s Options', 'gridd-plus' ),
-				/* translators: Number of a nested-grid. */
-				sprintf( esc_html__( 'Nested Grid %d', 'gridd-plus' ), $id )
-			),
-			'description' => '<a href="https://wplemon.com/documentation/gridd/grid-parts/nested-grid/" target="_blank" rel="noopener noreferrer nofollow">' . esc_html__( 'Learn more about these settings', 'gridd-plus' ),
-			'section'     => 'gridd_grid',
+			/* translators: Number of a nested-grid. */
+			'title'           => sprintf( esc_html__( 'Nested Grid %d', 'gridd-plus' ), $id ),
+			'description'     => '<a href="https://wplemon.com/documentation/gridd/grid-parts/nested-grid/" target="_blank" rel="noopener noreferrer nofollow">' . esc_html__( 'Learn more about these settings', 'gridd-plus' ),
+			'panel'           => 'theme_options',
+			'type'            => 'kirki-expanded',
+			'active_callback' => function() use ( $id ) {
+				return \Gridd\Customizer::is_section_active_part( "nested-grid-$id" );
+			},
 		]
 	);
 
@@ -54,7 +54,7 @@ function gridd_add_nested_grid_options( $id ) {
 	Customizer::add_field(
 		[
 			'settings'          => "gridd_nested_grid_$id",
-			'section'           => "gridd_grid_part_details_nested-grid-$id",
+			'section'           => "nested-grid-$id",
 			'type'              => 'gridd_grid',
 			'grid-part'         => "nested-grid-$id",
 			'label'             => esc_html__( 'Grid Settings', 'gridd-plus' ),
@@ -81,7 +81,7 @@ function gridd_add_nested_grid_options( $id ) {
 				"gridd_nested_grid_{$id}_template" => [
 					'selector'            => ".gridd-tp-nested-grid-{$id}",
 					'container_inclusive' => true,
-					'render_callback'     => function() {
+					'render_callback'     => function() use ( $id ) {
 						do_action( 'gridd_the_grid_part', "nested-grid-{$id}" );
 					},
 				],
@@ -91,27 +91,20 @@ function gridd_add_nested_grid_options( $id ) {
 
 	Customizer::add_field(
 		[
-			'type'        => 'dimension',
-			'settings'    => "gridd_nested_grid_{$id}_padding",
-			'label'       => esc_attr__( 'Grid Container Padding', 'gridd-plus' ),
-			'description' => '',
-			'section'     => "gridd_grid_part_details_nested-grid-$id",
-			'default'     => '0',
-			'transport'   => 'postMessage',
-			'css_vars'    => "--ns-gr-$id-pd",
-		]
-	);
-
-	Customizer::add_field(
-		[
 			'type'      => 'dimension',
 			'settings'  => "gridd_nested_grid_{$id}_gap",
 			'label'     => esc_attr__( 'Grid Container Gap', 'gridd-plus' ),
 			'tooltip'   => esc_html__( 'If you have a background-color defined for this grid, then that color will be visible through these gaps which creates a unique appearance since each grid-part looks separate.', 'gridd-plus' ),
-			'section'   => "gridd_grid_part_details_nested-grid-$id",
+			'section'   => "nested-grid-$id",
 			'default'   => '0',
 			'transport' => 'postMessage',
-			'css_vars'  => "--ns-gr-$id-gg",
+			'transport' => 'auto',
+			'output'    => [
+				[
+					'element'  => ".gridd-tp-nested-grid-$id",
+					'property' => '--gg',
+				],
+			],
 		]
 	);
 
@@ -122,25 +115,34 @@ function gridd_add_nested_grid_options( $id ) {
 			'label'       => esc_attr__( 'Grid Container max-width', 'gridd-plus' ),
 			'description' => esc_html__( 'The maximum width for this grid.', 'gridd-plus' ),
 			'tooltip'     => esc_html__( 'By setting the max-width to something other than 100% you get a boxed layout.', 'gridd-plus' ),
-			'section'     => "gridd_grid_part_details_nested-grid-$id",
+			'section'     => "nested-grid-$id",
 			'default'     => '',
-			'transport'   => 'postMessage',
-			'css_vars'    => "--ns-gr-$id-mw",
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element'  => ".gridd-tp-nested-grid-$id",
+					'property' => '--mw',
+				],
+			],
 		]
 	);
 
-	Customizer::add_field(
+	new \Kirki\Field\ReactColor(
 		[
-			'type'        => 'color',
 			'settings'    => "gridd_nested_grid_{$id}_background_color",
 			'label'       => esc_attr__( 'Grid Container background-color', 'gridd-plus' ),
 			'description' => '',
-			'section'     => "gridd_grid_part_details_nested-grid-$id",
+			'section'     => "nested-grid-$id",
 			'default'     => '#ffffff',
-			'transport'   => 'postMessage',
-			'css_vars'    => "--ns-gr-$id-bg",
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element'  => ".gridd-tp-nested-grid-$id",
+					'property' => '--bg',
+				],
+			],
 			'choices'     => [
-				'alpha' => true,
+				'formComponent' => 'ChromePicker',
 			],
 		]
 	);
@@ -151,10 +153,15 @@ function gridd_add_nested_grid_options( $id ) {
 			'settings'    => "gridd_nested_grid_{$id}_box_shadow",
 			'label'       => esc_html__( 'Drop Shadow Intensity', 'gridd-plus' ),
 			'description' => esc_html__( 'Set to "None" if you want to disable the shadow for this grid-part, or increase the intensity for a more dramatic effect.', 'gridd-plus' ),
-			'section'     => "gridd_grid_part_details_nested-grid-$id",
+			'section'     => "nested-grid-$id",
 			'default'     => 'none',
-			'transport'   => 'postMessage',
-			'css_vars'    => "--ns-gr-$id-bs",
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element'  => ".gridd-tp-nested-grid-$id",
+					'property' => '--bs',
+				],
+			],
 			'priority'    => 200,
 			'choices'     => [
 				'none' => esc_html__( 'None', 'gridd-plus' ),
@@ -172,7 +179,7 @@ function gridd_add_nested_grid_options( $id ) {
 			'type'      => 'switch',
 			'settings'  => "gridd_nested_grid_{$id}_sticky",
 			'label'     => esc_attr__( 'Sticky', 'gridd-plus' ),
-			'section'   => "gridd_grid_part_details_nested-grid-$id",
+			'section'   => "nested-grid-$id",
 			'default'   => false,
 			'transport' => 'auto',
 			'priority'  => 300,

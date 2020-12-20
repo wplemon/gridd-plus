@@ -8,19 +8,22 @@
 use Gridd\Customizer;
 use Gridd\Grid_Part\Navigation;
 
-/**
- * Register the menus.
- *
- * @since 1.0
- * @return void
- */
-function gridd_plus_add_nav_parts() {
-	$number = Navigation::get_number_of_nav_menus();
-	for ( $i = 1; $i <= $number; $i++ ) {
-		gridd_plus_nav_customizer_options( $i );
-	}
-}
-add_action( 'after_setup_theme', 'gridd_plus_add_nav_parts', 20 );
+add_action(
+	'after_setup_theme',
+	/**
+	 * Register the menus.
+	 *
+	 * @since 1.0
+	 * @return void
+	 */
+	function() {
+		$number = Navigation::get_number_of_nav_menus();
+		for ( $i = 1; $i <= $number; $i++ ) {
+			gridd_plus_nav_customizer_options( $i );
+		}
+	},
+	20
+);
 
 /**
  * This function creates all options for a navigation.
@@ -31,50 +34,39 @@ add_action( 'after_setup_theme', 'gridd_plus_add_nav_parts', 20 );
  * @return void
  */
 function gridd_plus_nav_customizer_options( $id ) {
-	Customizer::add_field(
+	new \Kirki\Field\Slider(
 		[
-			'type'        => 'slider',
-			'settings'    => "gridd_grid_nav_{$id}_font_size",
-			'label'       => esc_html__( 'Menu Font Size', 'gridd-plus' ),
-			'description' => esc_html__( 'The font-size for this menu. This value is relevant to your body font-size, so a value of 1em will be the same size as you content.', 'gridd-plus' ),
-			'section'     => "gridd_grid_part_details_nav_$id",
-			'default'     => 1,
-			'transport'   => 'postMessage',
-			'css_vars'    => [ "--nv-$id-fs", '$em' ],
-			'choices'     => [
+			'settings'        => "nav_{$id}_font_size",
+			'label'           => esc_html__( 'Menu Font Size', 'gridd-plus' ),
+			'description'     => esc_html__( 'The font-size for this menu. This value is relevant to your body font-size, so a value of 1em will be the same size as you content.', 'gridd-plus' ),
+			'section'         => "nav_$id",
+			'default'         => 1,
+			'transport'       => 'auto',
+			'output'          => [
+				[
+					'element'       => ".gridd-tp-nav_$id",
+					'property'      => '--fs',
+					'value_pattern' => '$em',
+				],
+			],
+			'choices'         => [
 				'min'    => 0.5,
 				'max'    => 2.5,
 				'step'   => 0.01,
 				'suffix' => 'em',
 			],
-		]
-	);
-
-	Customizer::add_field(
-		[
-			'type'        => 'slider',
-			'settings'    => "gridd_grid_nav_{$id}_items_padding",
-			'label'       => esc_html__( 'Items Padding', 'gridd-plus' ),
-			'description' => esc_html__( 'The inner padding for menu items. This setting affects the spacing between your menu items.', 'gridd-plus' ),
-			'section'     => "gridd_grid_part_details_nav_$id",
-			'default'     => 1,
-			'transport'   => 'postMessage',
-			'css_vars'    => [ "--nv-$id-ipd", '$em' ],
-			'choices'     => [
-				'min'    => 0.2,
-				'max'    => 3,
-				'step'   => 0.01,
-				'suffix' => 'em',
-			],
+			'active_callback' => function() use ( $id ) {
+				return get_theme_mod( "nav_{$id}_custom_options", false );
+			},
 		]
 	);
 
 	Customizer::add_field(
 		[
 			'type'            => 'slider',
-			'settings'        => "gridd_grid_nav_{$id}_collapse_icon_size",
+			'settings'        => "nav_{$id}_collapse_icon_size",
 			'label'           => esc_html__( 'Collapse Icon Size', 'gridd-plus' ),
-			'section'         => "gridd_grid_part_details_nav_$id",
+			'section'         => "nav_$id",
 			'default'         => 1,
 			'transport'       => 'postMessage',
 			'choices'         => [
@@ -83,35 +75,37 @@ function gridd_plus_nav_customizer_options( $id ) {
 				'step'   => .01,
 				'suffix' => 'em',
 			],
-			'css_vars'        => [ "--nv-$id-cis", '$em' ],
-			'active_callback' => [
+			'output'          => [
 				[
-					'setting'  => "gridd_grid_nav_{$id}_responsive_behavior",
-					'value'    => 'desktop-normal mobile-normal',
-					'operator' => '!==',
-				],
-				[
-					'setting'  => "gridd_grid_nav_{$id}_responsive_behavior",
-					'value'    => 'desktop-normal mobile-hidden',
-					'operator' => '!==',
+					'element'       => ".gridd-tp-nav_$id",
+					'property'      => '--cis',
+					'value_pattern' => '$em',
 				],
 			],
+			'active_callback' => function() use ( $id ) {
+				$responsive = get_theme_mod( "nav_{$id}_responsive_behavior" );
+				if ( 'desktop-normal mobile-normal' === $responsive || 'desktop-normal mobile-hidden' === $responsive ) {
+					return false;
+				}
+
+				return get_theme_mod( "nav_{$id}_custom_options", false );
+			},
 		]
 	);
 
 	if ( class_exists( 'WooCommerce' ) ) {
-		Customizer::add_field(
+		new \Kirki\Field\Checkbox_Switch(
 			[
 				'type'            => 'switch',
-				'settings'        => "gridd_grid_nav_{$id}_woo_cart",
+				'settings'        => "nav_{$id}_woo_cart",
 				'label'           => esc_html__( 'Show WooCommerce Cart', 'gridd-plus' ),
 				'description'     => __( 'If enabled, the cart will be added as a dropdown at the end of the menu.', 'gridd-plus' ),
-				'section'         => "gridd_grid_part_details_nav_$id",
+				'section'         => "nav_$id",
 				'default'         => 1 === $id,
 				'transport'       => 'auto',
 				'transport'       => 'postMessage',
 				'partial_refresh' => [
-					"gridd_grid_nav_{$id}_woo_cart_template" => [
+					"nav_{$id}_woo_cart_template" => [
 						'selector'            => ".gridd-tp-nav_{$id}",
 						'container_inclusive' => true,
 						'render_callback'     => function() use ( $id ) {

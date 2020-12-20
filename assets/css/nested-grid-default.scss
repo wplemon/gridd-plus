@@ -2,15 +2,15 @@
 // The ID will be replaced by the actual nested-grid ID via PHP
 // when the style is included inline in the document.
 .gridd-tp-nested-grid-ID {
-	background-color: var(--ns-gr-ID-bg);
-	padding: var(--ns-gr-ID-pd);
+	background-color: var(--bg);
+	padding: 1em;
 	display: flex;
 	justify-content: center;
 	overflow: visible;
-	box-shadow: var(--ns-gr-ID-bs);
+	box-shadow: var(--bs);
 
 	> .inner {
 		width: 100%;
-		max-width: var(--ns-gr-ID-mw);
+		max-width: var(--mw);
 	}
 }
